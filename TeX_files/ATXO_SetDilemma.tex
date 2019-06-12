@@ -1,38 +1,52 @@
 \section{The ‘ATXO\_Set’ Dilemma}
 
-We can say that all the ATXOs created in the same transaction are part of an ‘ATXO\_Set’, i.e. they will 
-forever be linked to each other as they were created at the same time and it can be assumed that they all 
-belong to the same user. There will always be multiple outputs per transaction because of the 
-denomination system, because amounts have to be split into discrete values. 
+We can say that all the ATXOs created in the same transaction are part 
+of an ‘\textit{ATXO\_Set}’, i.e. they will forever be linked to each 
+other as they were created at the same time and it can be assumed that 
+they all belong to the same user. There will always be multiple outputs 
+per transaction because of the denomination system, because amounts 
+have to be split into discrete values. 
 
 
 
-The following dilemma may then occur; the ATXO picking algorithm (as it is now) could select ATXOs from 
-an ‘ATXO\_SET‘ as ‘mixins‘ in a ring-signature and this could potentially compromise privacy by making the 
-signature more susceptible to deductive analysis. In other words, an observer could be able to determine 
-which of the ‘mixins‘ are fake. 
+The following dilemma may then occur; the ATXO picking algorithm (as it is 
+now) could select ATXOs from an ‘\textit{ATXO\_SET}‘ as ‘\textit{mixins}‘ 
+in a ring-signature and this could potentially compromise privacy by making 
+the signature more susceptible to deductive analysis. In other words, an 
+observer could be able to determine which of the ‘\textit{mixins}‘ are fake. 
 
 
 
 \subsection{Solutions}
-New algorithms have been created to negate these issues and strengthen the privacy of the network. This 
-way depending on the random pick of the initial ‘mixins‘ and the denominations to fill, there will be a 
-random amount of ‘mixins‘ from the same transaction in the final transaction. 
+New algorithms have been created to negate these issues and strengthen the 
+privacy of the network. This way depending on the random pick of the initial
+‘\textit{mixins}‘ and the denominations to fill, there will be a random 
+amount of ‘\textit{mixins}‘ from the same transaction in the final transaction. 
 
 
 
-This will also ensure that each output is only used once as a ‘mixin‘ in one of the ring-signatures (VINs). 
-Something which was previously only assured by chance. Same ‘mixin‘ in different VINs can only be fake. 
-- When the first 9 ‘mixins‘ for an output are chosen, it is completely random, but is ensured that all ‘mixins‘ 
-come from different transactions. 
-- When ‘mixins‘ for the second ring-signature are chosen, there is a 33% chance that the algorithm tries to 
-choose outputs from the transaction chosen as ‘mixins‘ for the first ring-signature. If no outputs can 
-picked that way, a new random output is chosen and the corresponding transaction is added as new 
-source of ‘mixins‘. 
-- Repeat. 
+This will also ensure that each output is only used once as a ‘\textit{mixin}‘ 
+in one of the ring-signatures (VINs). Something which was previously only 
+assured by chance. Same ‘\textit{mixin}‘ in different VINs can only be fake. 
 
 
 
-We believe that these issues also exist in Monero and other CryptoNote based systems and may have been 
-described first in a paper entitled \textit{“A Traceability Analysis of Monero’s Blockchain”}\footnote{https://eprint.iacr.org/2017/338.pdf} and in particular in 
+\begin{itemize}
+	\item When the first 9 ‘\textit{mixins}‘ for an output are chosen, it is 
+	completely random, but is ensured that all ‘\textit{mixins}‘ come from 
+	different transactions.
+	\item When ‘\textit{mixins}‘ for the second ring-signature are chosen, 
+	there is a 33\% chance that the algorithm tries to 	choose outputs from 
+	the transaction chosen as ‘\textit{mixins}‘ for the first ring-signature. 
+	If no outputs can 	picked that way, a new random output is chosen and 
+	the corresponding transaction is added as new source of ‘\textit{mixins}‘.
+	\item Repeat.
+\end{itemize}
+
+
+
+We believe that these issues also exist in Monero and other CryptoNote based 
+systems and may have been described first in a paper entitled 
+\textit{“A Traceability Analysis of Monero’s Blockchain”}
+\footnote{https://eprint.iacr.org/2017/338.pdf} and in particular in 
 chapter: 5.2 Heuristic II: Leveraging Output Merging in this paper.
