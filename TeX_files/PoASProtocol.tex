@@ -1,0 +1,36 @@
+\chapter{The Proof-of-Anonymous-Stake (PoAS) protocol}
+This section introduces a new staking algorithm that was introduced to the 
+Spectrecoin mainnet through the release of v3.0.9 and a hard-fork on 
+17\textsuperscript{th} May 2019. This is the first known implementation 
+of a private staking protocol employing ring-signatures in the staking 
+transactions. This protocol was designed and coded by Spectrecoin lead 
+developer Philip Mueller (\textit{@Tek}). The protocol is based on the 
+PoSv3 protocol that we described in the previous section.
+
+
+
+\section{Introduction}
+We consider that a privacy focused pure Proof-of-Stake (\textit{PoS}) 
+network such as Spectrecoin need to be able to maintain consensus through 
+a mechanism that maintains privacy, prevents easy blockchain analysis and 
+is censorship resistant. Hence, such a network is not complete without a 
+way to stake in private. There should be a way to maintain the privacy of 
+all the network participants throughout the staking process. The 
+participants should also be able to acquire their stake reward whilst 
+maintaining their privacy.
+
+
+
+\section{The Problem}
+
+In a standard staking transaction (\textit{PoSv3}) a value known as the '\textit{kernel hash}' is calculated from several inputs including values taken from the last valid block, called a '\textit{StakeModifier}' and the value of the user's UTXO. A valid '\textit{kernel hash}' needs to be below a certain threshold that is determined by a separate calculation. The user (the wallet) who is able to generate a valid 'kernel hash' will be granted the right to add the next block to the block-chain. The newly added block includes the generated stake reward (XSPEC) and any transactions currently in the memory pool + any fees. The UTXO used to calculate the valid 'kernel hash' will be spent and the generated stake reward + the value of the spent UTXO will be included in a newly generated UTXO associated with the same public address. In this way every stake that has been generated as a result of UTXOs associated with a certain public address will forever be linked to that address and it's plain for all to see. Below is an example of a standard staking transaction: Example of a staking transaction from the Spectrecoin block explorer\footnote{https://chainz.cryptoid.info/xspec/block.dws?1190944.htm} As with any typical PoS cryptocurrency the staking transactions suffer from all the privacy issues of a standard UTXO transaction, and these transactions are potentially traceable and linkable on the blockchain. It would therefore require some effort from the users to try to maintain anonymity in a standard PoS system and that will in turn weaken the overall resilience of the network against analysis. The network should not have to depend on the participants to maintain anonymity. All the staking transactions completed by the same user can potentially be linked and users’ balances can be estimated, hence the ‘rich list’ feature of many block explorers. As explained previously, most block-chain forensic analysis focuses on address re-use and change addresses and this is exactly what you get with a standard PoS network.
+
+
+
+\section{The Solution}
+We have therefore developed what we call ‘Proof-of-Anonymous-Stake’ (PoAS) to solve this problem. This is a brand new and novel staking protocol utilising only SPECTRE and ring-signatures in the staking transactions and the rewards are also paid in SPECTRE. This offers a through-and-through confidential way to maintain consensus and provide strong privacy for participants whilst securing the network. It is also appropriate to emphasise that this confidential and private consensus mechanism is totally decentralised and do not depend on any central servers or authority and is 100% peer-to-peer and there is no trusted setup. This provides very strong network resilience with no single point of failure.
+
+
+
+\section{Benefits of Anonymous Staking}
+The benefits are straight forward and easy to appreciate; if you transfer your holdings to SPECTRE, our anonymous coin, nobody will be able to know your balance, nobody will know how much you stake and if you keep transactions SPECTRE <> SPECTRE you preserve your privacy at all times. It is useful however to remember that once SPECTRE is converted to XSPEC all your XSPEC <> XSPEC transactions are again potentially traceable. Note that the potential traceability only becomes an issue after the conversion from SPECTRE >> XSPEC and does not affect the previous SPECTRE transaction. With the addition of anonymous staking to Spectrecoin and the updated UI it is now easy to distinguish between the different transactions and you will clearly see if you are staking XSPEC, SPECTRE or both. The previously described ‘Development Contribution Blocks’ (marked as ‘contributed’) will still occur every 1 in 6 blocks regardless of whether the block has been staked via the standard staking transaction or the anonymous ATXO staking transaction.
