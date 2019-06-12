@@ -1,0 +1,14 @@
+\section{Minimum Ring Size}
+
+A minimum ring size of 10 is being enforced as part of the consensus since Spectrecoin v3.x. 
+
+ 
+
+Any ATXO used in a ring size 1 transaction will be marked as ‘compromised’ and will not be selected as a 
+‘mixin’ in any future ring signature transaction. 
+
+ 
+
+We have seen how dual-key stealth address techniques are used to create ATXOs on the Spectrecoin 
+blockchain with bundled one-time key pair that can only be ‘spent’ by providing a valid ring signature. 
+In this way Spectrecoin protects the privacy of both the sender and the receiver. 

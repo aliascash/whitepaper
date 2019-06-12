@@ -1,6 +1,7 @@
 \documentclass[a4paper,12pt]{book}
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
+\usepackage{xfrac}
 \graphicspath{ {./Images/} }
 
 \begin{document}
@@ -14,6 +15,10 @@
 \frontmatter
 \maketitle
 \tableofcontents
+
+\setlength{\arrayrulewidth}{.5mm}
+\setlength{\tabcolsep}{10pt}
+\renewcommand{\arraystretch}{1.5}
 
 \mainmatter
 \include{./TeX_files/abstract}
@@ -37,6 +42,11 @@
 \include{./TeX_files/ringSignatures}
 \include{./TeX_files/std-UTXO-transaction}
 \include{./TeX_files/anonymous-ATXO-transaction}
+\include{./TeX_files/minimumRingSize}
+\include{./TeX_files/ringSizeFormula}
+\include{./TeX_files/allSpentDilemma}
+\include{./TeX_files/ATXO_SetDilemma}
+\include{./TeX_files/PoSv3Protocol}
 
 \backmatter
 % bibliography, glossary and index would go here.
