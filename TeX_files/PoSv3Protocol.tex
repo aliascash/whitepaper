@@ -1,6 +1,100 @@
-\section{The Proof-of-Stake (PoSv3) Protocol }
-The following section, in its entirety, has been taken directly from, and is based on a blog post by Qtum\footnote{https://qtum.org/en} 
-developer ‘Earlz’ from 27/07/2017 called \textit{“The missing explanation of Proof of Stake Version 3”}\footnote{http://earlz.net/view/2017/07/27/1904/the-missing-explanation-of-proof-of-stake-version } and is the 
-best-known source of information on the PoSv3 protocol. The Spectrecoin PoSv3 implementation adheres 
-completely to this protocol description for both blocks and transactions and so the explanation from ‘Earlz’ 
-can be used for Spectrecoin. 
+\chapter{The Proof-of-Stake (PoSv3) Protocol}
+The following section, \underline{in its entirety}, has been taken
+directly from, and is based on a blog post by
+Qtum\footnote{https://qtum.org/en} developer ‘\textit{Earlz}’
+from 27/07/2017 called \textit{“The missing explanation of Proof
+of Stake Version 3”}\footnote{http://earlz.net/view/2017/07/27/1904/the-missing-explanation-of-proof-of-stake-version}
+and is the best-known source of information on the PoSv3 protocol.
+The Spectrecoin PoSv3 implementation adheres completely to this protocol
+description for both blocks and transactions and so the explanation from
+‘\textit{Earlz}’ can be used for Spectrecoin.
+
+
+
+The core concept of Proof-of-Stake (PoS) is very similar to that of
+Proof-of-Work (PoW), a lottery. However, the big difference is that,
+in PoS, it is not possible to "get more tickets" to the lottery by
+simply changing some data in the block and generate a new ticket.
+Instead of the "block hash" being the lottery ticket to judge against
+a target, PoS invents the notion of a "kernel hash". The ‘kernel hash’
+is composed of several pieces of data that are not readily changeable
+in the current block. And so, because the miners do not have an easy
+way to modify the ‘kernel hash’, they cannot simply iterate through a
+large amount of hash values like in PoW. PoS blocks also add many
+additional consensus rules in order to realise it's objectives. First,
+unlike in PoW, the coinbase transaction (the first transaction in the
+block) must be empty and the reward must be 0 tokens. Instead, to reward
+stakers, there is a special "staking transaction" which must always be
+the 2nd transaction in the block. A ‘staking transaction’ is defined as
+any transaction that:
+
+
+\begin{itemize}
+	\item Has at least one valid VIN
+	\item It's first VOUT must be an empty script
+	\item It's second VOUT must not be empty
+\end{itemize}
+
+
+
+Furthermore, ‘staking transactions’ must abide by these rules to be valid
+in a block:
+\begin{itemize}
+	\item The second VOUT must be either a pubkey (not pubkeyhash!) script, 
+	or an OP\_RETURN script that is unspendable (data-only) but stores data 
+	for a public key
+	\item The timestamp in the transaction must be equal to the block timestamp
+	\item The total output value of a stake transaction must be less than or 
+	equal to the total inputs plus the PoS block reward plus the block's 
+	total transaction fees. output <= (input + block\_reward + tx\_fees)
+	\item The first spent VIN's output must be confirmed by at least 450 
+	blocks (in other words, the coins being spent must be at least 450 
+	blocks old)
+	\item Though more VINs can used and spent in a ‘staking transaction’, 
+	the first VIN is the only one used for consensus parameters
+\end{itemize}
+
+
+
+These rules ensure that the stake transaction is easy to identify and
+ensures that it gives enough info to the blockchain to validate the block.
+The empty VOUT method is not the only way staking transactions could have
+been identified, but this was the original design from Sunny
+King\footnote{https://whitepaperdatabase.com/peercoin-ppc-whitepaper/}
+and has worked well enough. Now we understand what a ‘staking transaction’
+is, and what rules such transaction must abide by.
+
+
+
+The next part is to understand the rules for PoSv3 blocks:
+\begin{itemize}
+	\item Must have exactly 1 staking transaction.
+	\item The staking transaction must be the second transaction in the block.
+	\item The coinbase transaction must have 0 output value and a single empty VOUT
+	\item The block timestamp must have its bottom 4 bits set to 0 (referred 
+	to as a "mask" in the source code). This effectively means the blocktime 
+	can only be represented in 16 second intervals, decreasing its granularity
+	\item The version of the block must be 7
+	\item A block's "kernel hash" must meet the weighted difficulty for PoS
+	\item The block hash must be signed by the public key in the staking 
+	transaction's second VOUT. The signature data is placed in the block 
+	(but is not included in the formal block hash)
+	\item The signature stored in the block must be "LowS", which means 
+	consisting only of a single piece of data and must be as compressed 
+	as possible (no extra leading 0s in the data, or other opcodes)
+	\item Most other rules for standard PoW blocks apply (valid merkle 
+	hash, valid transactions, timestamp is within time drift allowance, etc)
+\end{itemize}
+
+
+
+There are a lot of details here that we'll cover in a bit. The most important
+part that really makes PoS effective lies in the "kernel hash". The kernel
+hash is used similar to PoW (if hash meets difficulty, then block is valid).
+
+
+
+However, the kernel hash is not directly modifiable in the context of the
+current block. We will first cover exactly what goes into these structures
+and mechanisms, and later explain why this design is exactly this way, and
+what unexpected consequences can come from minor changes to it
