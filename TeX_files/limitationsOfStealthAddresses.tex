@@ -1,2 +1,12 @@
 \section{Limitations of Stealth Addresses}
-As mentioned above, stealth addresses generate a new standard address for every payment but If you receive for example 10 transactions using your stealth address you will have 10 UTXOs available to form further transactions. If you then use some or all of the UTXOs to form a transaction an observer will be able to link the UTXOs together and assume that they all belong to one user (merging of outputs). Furthermore, an attacker could create a number of dust transactions with a stealth address and then monitor the blockchain to see if the user ever joins those UTXOs together or with others, in order to make an input to a higher value transaction in the future. Blockchain analysis can easily link this. This is the reason why any cryptocurrency that rely on stealth addresses ONLY is not private.
+As mentioned above, stealth addresses generate a new standard address for
+every payment but If you receive for example 10 transactions using your
+stealth address you will have 10 UTXOs available to form further
+transactions. If you then use some or all of the UTXOs to form a transaction
+an observer will be able to link the UTXOs together and assume that they all
+belong to one user (merging of outputs). Furthermore, an attacker could
+create a number of dust transactions with a stealth address and then monitor
+the blockchain to see if the user ever joins those UTXOs together or with
+others, in order to make an input to a higher value transaction in the future.
+Blockchain analysis can easily link this. This is the reason why any
+cryptocurrency that rely on stealth addresses ONLY is not private.

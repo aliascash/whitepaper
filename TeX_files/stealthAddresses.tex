@@ -1,49 +1,106 @@
 \chapter{Stealth Addresses}
-Before we go on to explain what stealth technology is and how it is used in Spectrecoin we need to get some background and some knowledge about how standard UTXO transactions might be de-anonymised and why stealth technology came to be used to counter this issue. It will also become apparent why stealth address technology in itself is not sufficient to provide reasonable privacy. 
+Before we go on to explain what stealth technology is and how it is used in
+Spectrecoin we need to get some background and some knowledge about how
+standard UTXO transactions might be de-anonymised and why stealth technology
+came to be used to counter this issue. It will also become apparent why
+stealth address technology in itself is not sufficient to provide reasonable
+privacy.
 
- 
-
-The Spectrecoin blockchain is based on the design from Bitcoin Core (except the consensus mechanisms) and in both systems there are ... possible receiving addresses. This is an extremely large number and it would give every person on Earth ... different receiving addresses to use. The fact that it is possible to re-use an address more than once can be considerd a fluke and is not by design.
- 
 
 
-First, let’s have a quick look at how a UTXO blockchain might be deanonymized. The three major factors that can reduce privacy for the user and are exploitable through transaction graph analysis are address re-use, change addresses and the merging of outputs. 
+The Spectrecoin blockchain is based on the design from Bitcoin Core (except
+the consensus mechanisms) and in both systems there are ... possible receiving
+addresses. This is an extremely large number and it would give every person on
+Earth ... different receiving addresses to use. The fact that it is possible
+to re-use an address more than once can be considerd a fluke and is not by
+design.
 
- 
 
-Address re-use is treating XSPEC addresses like a bank account where a single address is used for multiple transactions. XSPEC addresses are not designed to be used in this way. There are in fact no restrictions on the number of XSPEC addresses one person can use and for each transaction a new XSPEC address should 
-be created. 
 
- 
+First, let’s have a quick look at how a UTXO blockchain might be deanonymized.
+The three major factors that can reduce privacy for the user and are exploitable
+through transaction graph analysis are address re-use, change addresses and the
+merging of outputs.
 
-When addresses are re-used, all other transactions performed by that address can be seen by examining the blockchain. If you are aware of a transaction made by a person of interest and that transaction comes from the same address by which this person receives all their payments, then their balances can easily be determined. You will also be able to look back at the history of that address, following the chains of transactions, to ascertain what other information can be extracted. 
 
- 
 
-Address re-use also weakens the security of the coins stored in those addresses. Transaction signing requires 256 bytes of random data (r-value) so that the private key cannot be reverse engineered. If the r-value is not truly random then the private key can be determined, which can be used to sign other transactions for that particular address. This attack can be negated by not re-using addresses, as once a transaction is signed from an address, it remains empty. 
+Address re-use is treating XSPEC addresses like a bank account where a single
+address is used for multiple transactions. XSPEC addresses are not designed to
+be used in this way. There are in fact no restrictions on the number of XSPEC
+addresses one person can use and for each transaction a new XSPEC address should
+be created.
 
- 
 
-Furthermore, each input in a standard transaction must be a full UTXO from a previous transaction as UTXO’s cannot be partially spent. This means that if you spend / send less than a full UTXO you will generate an output that is your change address. Therefore, an attacker examining the blockchain may generally assume that one output in any transaction belongs to the creator of the transaction. 
 
- 
+When addresses are re-used, all other transactions performed by that address
+can be seen by examining the blockchain. If you are aware of a transaction
+made by a person of interest and that transaction comes from the same address
+by which this person receives all their payments, then their balances can
+easily be determined. You will also be able to look back at the history of
+that address, following the chains of transactions, to ascertain what other
+information can be extracted.
 
-Also, if a transaction is generated where two or more UTXOs are pooled together to create the total input required an assumption can be made that the addresses merged together belongs to the same person. 
 
- 
 
-Let’s then introduce Stealth Address techniques which allow public keys appearing in the blockchain to be fully disconnected from “stealth” public keys which can be publicised by a payee19. The public “stealth” keys publicised serve as a “master public key” from which “ephemeral public keys” are derived. The “stealth” public key is never recorded in the blockchain. This enables the payee to receive infinite un-linkable payments by publicising only one stealth address. The problem of address re-use is therefore solved20. A Stealth address therefore is a privacy technique that protects the privacy of the recipient. The first stealth address technique was invented by a user known as ‘bytecoin’ in 2011 in the Bitcointalk forum. Later improvements to stealth tech were proposed by van Saberhagen in 2013/14 and by Peter Todd in 
-2014. 
+Address re-use also weakens the security of the coins stored in those addresses.
+Transaction signing requires 256 bytes of random data (r-value) so that the
+private key cannot be reverse engineered. If the r-value is not truly random
+then the private key can be determined, which can be used to sign other
+transactions for that particular address. This attack can be negated by
+not re-using addresses, as once a transaction is signed from an address,
+it remains empty.
 
- 
 
-The original stealth technology had various problems and on 02/08/2014 one of the ShadowCash developers known as ‘rynomster’ announced a first fully working implementation of stealth address technology known as “dual-key stealth addresses” that solved some of the issues in previous proposals. A “dual-key stealth address” has two public keys and solves certain problems associated with previous schemes. For a full and in-depth explanation of stealth addresses see the paper cited above. 
 
- 
+Furthermore, each input in a standard transaction must be a full UTXO
+from a previous transaction as UTXO’s cannot be partially spent. This
+means that if you spend / send less than a full UTXO you will generate
+an output that is your change address. Therefore, an attacker examining
+the blockchain may generally assume that one output in any transaction
+belongs to the creator of the transaction.
 
-(Courtois N. and Mercer R. (2017). Stealth Address and Key Management Techniques in Blockchain Systems. In Proceedings of the 3rd International Conference on Information Systems Security and Privacy ISBN 978-989-
-758-209-7, pages 559-566. DOI: 10.5220/0006270005590566) 
 
- 
 
-The use of dual-key stealth addresses provide privacy for the receiver of funds and introduces various forms of un-linkability, (1) It is hard to link different public keys/addresses of the same user, (2) It is hard to link different transactions of the same user, (3) It is hard to link the sender to the recipient.
+Also, if a transaction is generated where two or more UTXOs are pooled
+together to create the total input required an assumption can be made
+that the addresses merged together belongs to the same person.
+
+
+
+Let’s then introduce Stealth Address techniques which allow public keys
+appearing in the blockchain to be fully disconnected from “stealth” public
+keys which can be publicised by a payee19. The public “stealth” keys
+publicised serve as a “master public key” from which “ephemeral public
+keys” are derived. The “stealth” public key is never recorded in the
+blockchain. This enables the payee to receive infinite un-linkable
+payments by publicising only one stealth address. The problem of address
+re-use is therefore solved20. A Stealth address therefore is a privacy
+technique that protects the privacy of the recipient. The first stealth
+address technique was invented by a user known as ‘bytecoin’ in 2011 in
+the Bitcointalk forum. Later improvements to stealth tech were proposed
+by van Saberhagen in 2013/14 and by Peter Todd in 2014.
+
+
+
+The original stealth technology had various problems and on 02/08/2014 one
+of the ShadowCash developers known as ‘rynomster’ announced a first fully
+working implementation of stealth address technology known as “dual-key
+stealth addresses” that solved some of the issues in previous proposals.
+A “dual-key stealth address” has two public keys and solves certain problems
+associated with previous schemes. For a full and in-depth explanation of
+stealth addresses see the paper cited above.
+
+
+
+(Courtois N. and Mercer R. (2017). Stealth Address and Key Management
+Techniques in Blockchain Systems. In Proceedings of the 3rd International
+Conference on Information Systems Security and Privacy ISBN 978-989-
+758-209-7, pages 559-566. DOI: 10.5220/0006270005590566)
+
+
+
+The use of dual-key stealth addresses provide privacy for the receiver of
+funds and introduces various forms of un-linkability, (1) It is hard to
+link different public keys/addresses of the same user, (2) It is hard to
+link different transactions of the same user, (3) It is hard to link the
+sender to the recipient.
