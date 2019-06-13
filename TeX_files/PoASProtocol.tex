@@ -201,15 +201,94 @@ Please see the examples below taken from the Spectrecoin Block explorer:
 
 
 
+\begin{figure}[h]
+	\caption{1000 SPECTRE is staked, 3 SPECTRE is staking reward for the block, 0.001 SPECTRE is the lowest running and hence 3 SPECTRE gets split into $0.001 + 0.004 + 0.005 + 0.04 + 0.05 + 0.4 + 0.5 + 1 + 1 = 3$ SPECTRE} 
+	\centering
+	\includegraphics[width=\textwidth]{SPECTRE-StakeExample01.png}
+	\footnote{https://chainz.cryptoid.info/xspec/block.dws?1169499.htm}
+\end{figure}
 
 
 
-1000 SPECTRE is staked, 3 SPECTRE is staking reward for the block, 0.001 SPECTRE is the lowest running and hence 3 SPECTRE gets split into 
-0.001 + 0.004 + 0.005 + 0.04 + 0.05 + 0.4 + 0.5 + 1 + 1 = 3 SPECTRE36. 
+\begin{figure}[h]
+	\caption{A further example of where 1000 SPECTRE is staked, 3 SPECTRE is the staking reward for the block, 100 SPECTRE is the lowest running and hence 1000 SPECTRE gets split into $100 + 400 + 500 = 1000$ SPECTRE}
+	\centering
+	\includegraphics[width=\textwidth]{SPECTRE-StakeExample02.png}
+	\footnote{https://chainz.cryptoid.info/xspec/block.dws?1168976.htm} 
+\end{figure}
 
 
 
+\section{ATXO Consolidation} 
+Through the ‘\textit{Stealth Staking}’ process and in any SPECTRE $<>$ 
+SPECTRE transactions there will be constant creation of small value ATXOs 
+from staking rewards and transaction change. This will tend to result in 
+larger transaction sizes in subsequent transactions as the number of 
+smaller value ATXOs are combined for the desired output amount. 
 
 
-A further example of where 1000 SPECTRE is staked, 3 SPECTRE is the staking reward for the block, 100 SPECTRE is the lowest running and 
-hence 1000 SPECTRE gets split into 100 + 400 + 500 = 1000 SPECTRE37.
+
+To solve this problem an extra ATXO ‘\textit{consolidation algorithm}’ 
+has been implemented as part of the ATXO staking transaction where same 
+value ATXOs are consolidated into larger value ATXOs. After a valid 
+‘\textit{Kernel Hash}’ is found, the ATXO used for staking is added 
+as the first VIN to the transaction. The ‘\textit{consolidation algorithm}’ 
+then tries to consolidate up to 50 ATXOs. The ATXOs are iterated from the 
+lowest to the highest amount with a maximum ATXO value to be consolidated 
+of 100 SPECTRE (MAX\_STAKING\_OUTPUT / 10). Every time 10 ATXOs are found 
+with same value they are added as an additional input. A maximum of 50 
+Inputs are added. In the below example we have chosen some values as an 
+illustration. 
+
+
+
+   \begin{table}
+	\centering
+	\begin{tabular}{lllll}
+		\textbf{Multiple} &     & \textbf{ATXO value} &      & \textbf{Consolidated ATXO value} \\
+		10                & $*$ & 0.00000001          & $>>$ & 0.0000001 \\
+		10                & $*$ & 3                   & $>>$ & 30        \\
+		30                & $*$ & 1                   & $>>$ & 30        \\
+	\end{tabular}
+	
+	\caption{Consolidation examples}
+	\label{tbl:consolidationExamples}
+	% Link to this label with \ref{tbl:consolidationExamples}	
+\end{table}
+
+
+The new consolidation algorithm ensures that at least 200 unspent 
+‘\textit{mixins}’ of any denomination remains. This means that if less 
+than 200 unspent ATXOs of a certain denomination exists, there is no 
+consolidation of that particular denomination. This serves a dual purpose; 
+it reduces the number of small value ATXOs and so reduces the subsequent 
+transaction sizes as discussed above, but it also works to increase what 
+we can call the ‘\textit{transactional entropy}’ of the network to reduce 
+the possibility of blockchain analysis by linking ATXOs in transactions. 
+It is apt at this stage to remember that each of the ATXOs whether 
+consolidated or not can all act as ‘\textit{mixins}’ in all future 
+transactions, and an observer can NEVER establish if the ATXO value has 
+been spent. Consequently, what we call the ‘\textit{Transactional Entropy}’ 
+increases by the block with minimal blockchain bloat. 
+
+
+
+Please see the examples below taken from the Spectrecoin Block explorer: 
+
+
+
+\begin{figure}[h]
+	\caption{In this example you can see $10 * 30$ SPECTRE being consolidated into $1 * 30$ SPECTRE}
+	\centering
+	\includegraphics[width=\textwidth]{SPECTRE-ConsolidationExample01.png}
+	\footnote{https://chainz.cryptoid.info/xspec/block.dws?1190841.htm} 
+\end{figure}
+\begin{figure}[h]
+	\caption{In this example you can see $10 * 30$ SPECTRE being consolidated into $1 * 30$ SPECTRE}
+	\centering
+	\includegraphics[width=\textwidth]{SPECTRE-ConsolidationExample02.png}
+	\footnote{https://chainz.cryptoid.info/xspec/block.dws?1190898.htm} 
+\end{figure}
+
+
+
