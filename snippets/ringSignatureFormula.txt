@@ -1,0 +1,26 @@
+KEYGEN: P_i=x_i*G, I_i=x_i*H(P_i) 
+ 
+SIGN: as signer j; \alpha = random, \forall_{i!=j} s_i = random 
+ 
+c_{j+1} = h(P_1,...,P_n,\alpha*G,\alpha*H(P_j)) 
+c_{j+2} = h(P_1,...,P_n,s_{j+1}*G+c_{j+1}*P_{j+1},s_{j+1}*H(P_{j+1})+c_{j+1}*I_j) 
+... 
+c_j = h(P_1,...,P_n,s_{j-1}*G+c_{j-1}*P_{j-1},s_{j-1}*H(P_{j-1})+c_{j-1}*I_j) 
+ 
+so that defines c_1,...,c_n with j values taken mod l some number of signers.  Next find the s_j 
+value: 
+ 
+Now \alpha*G = s_j*G+c_j*P_j so \alpha = s_j+c_j*x_j so s_j = \alpha - c_j*x_j mod n. 
+ 
+Similarly \alpha*H(P_j) = s_j*H(P_j)+c_j*I_j so \alpha works there too. 
+ 
+\sigma = (m,I_j,c_1,s_1,...,s_n) 
+ 
+VERIFY: 
+ 
+\forall_{i=1..n} compute e_i=s_i*G+c_i*P_i and E_i=s_i*H(P_i)+c_i*I_j and 
+c_{i+1}=h(P_1,...,P_n,e_i,E_i)  
+ 
+check c_{n+1}=c_1 
+ 
+LINK: reject duplicate I_j values.

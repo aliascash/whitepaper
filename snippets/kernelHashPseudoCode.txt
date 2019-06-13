@@ -1,0 +1,12 @@
+while(true){ 
+    foreach(utxo in wallet){ 
+        blockTime = currentTime - currentTime % 16 
+        posDifficulty = difficulty * utxo.value 
+        hash = hash(previousStakeModifier << utxo.time << utxo.hash << 
+utxo.n << blockTime) 
+        if(hash < posDifficulty){ 
+            done 
+        } 
+    }  
+    wait 16s -- wait 16 seconds, until the block time can be changed 
+} 
