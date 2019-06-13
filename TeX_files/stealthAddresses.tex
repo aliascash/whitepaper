@@ -1,4 +1,4 @@
-\chapter{Stealth Addresses}
+\section{Stealth Addresses}
 Before we go on to explain what stealth technology is and how it is used in
 Spectrecoin we need to get some background and some knowledge about how
 standard UTXO transactions might be de-anonymised and why stealth technology
@@ -106,7 +106,7 @@ link different transactions of the same user, (3) It is hard to link the
 sender to the recipient.
 
 
-\section{Limitations of Stealth Addresses}
+\subsection{Limitations of Stealth Addresses}
 As mentioned above, stealth addresses generate a new standard address for
 every payment but If you receive for example 10 transactions using your
 stealth address you will have 10 UTXOs available to form further
@@ -121,7 +121,7 @@ cryptocurrency that rely on stealth addresses ONLY is not private.
 
 
 
-\section{Anonymous Spectrecoin Conversion}
+\subsection{Anonymous Spectrecoin Conversion}
 Dual-key Stealth technology is used in the process to create anonymous SPECTRE
 by consuming the equivalent value of XSPEC. The creation of SPECTRE involves
 the creation of an ATXO with a bundled one-time key-pair that will allow that
@@ -133,7 +133,7 @@ known to the sender and an observer cannot determine if the ATXO has been
 
 
 
-\section{Keyimage}
+\subsection{Keyimage}
 The ‘keyImage’ is the result of a cryptographic one-way function derived
 from a user’s one-time keypair. The ‘keyimage’ is unique to the ATXO
 contributing the value to the new ATXO being created in an anonymous
@@ -150,9 +150,9 @@ will be generated and the system will reject the transaction as that
 
 
 \begin{lstlisting}
-The following SPECTRE denominations are possible: 
-1000, 500, 400, 300, 100, 50, 50, 30, 10, 
-5, 4, 3, 1, 0.5, 0.4, 0.3, 0.1, 0.0(000000)5, 
+The following SPECTRE denominations are possible:
+1000, 500, 400, 300, 100, 50, 50, 30, 10,
+5, 4, 3, 1, 0.5, 0.4, 0.3, 0.1, 0.0(000000)5,
 0.0(000000)4, 0.0(000000)3, 0.0(000000)1
 \end{lstlisting}
 
