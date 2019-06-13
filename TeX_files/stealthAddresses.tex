@@ -104,3 +104,62 @@ funds and introduces various forms of un-linkability, (1) It is hard to
 link different public keys/addresses of the same user, (2) It is hard to
 link different transactions of the same user, (3) It is hard to link the
 sender to the recipient.
+
+
+\section{Limitations of Stealth Addresses}
+As mentioned above, stealth addresses generate a new standard address for
+every payment but If you receive for example 10 transactions using your
+stealth address you will have 10 UTXOs available to form further
+transactions. If you then use some or all of the UTXOs to form a transaction
+an observer will be able to link the UTXOs together and assume that they all
+belong to one user (merging of outputs). Furthermore, an attacker could
+create a number of dust transactions with a stealth address and then monitor
+the blockchain to see if the user ever joins those UTXOs together or with
+others, in order to make an input to a higher value transaction in the future.
+Blockchain analysis can easily link this. This is the reason why any
+cryptocurrency that rely on stealth addresses ONLY is not private.
+
+
+
+\section{Anonymous Spectrecoin Conversion}
+Dual-key Stealth technology is used in the process to create anonymous SPECTRE
+by consuming the equivalent value of XSPEC. The creation of SPECTRE involves
+the creation of an ATXO with a bundled one-time key-pair that will allow that
+ATXO to be ‘spent’ by providing a valid ring signature using your remaining
+public key corresponding to the ATXO you previously created and the
+corresponding ‘keyimage’21. The fact that an ATXO has been ‘spent’ is only
+known to the sender and an observer cannot determine if the ATXO has been
+‘spent’.
+
+
+
+\section{Keyimage}
+The ‘keyImage’ is the result of a cryptographic one-way function derived
+from a user’s one-time keypair. The ‘keyimage’ is unique to the ATXO
+contributing the value to the new ATXO being created in an anonymous
+transaction. The ‘keyimage’ is then recorded in the blockchain to prevent
+double spends, but without revealing which ATXO is the value-contributing
+member in the ring signature. Although the ‘keyimage’ is recorded in the
+blockchain it cannot be reverse engineered due to the one-wayness of the
+cryptographic function that generated it. The calculation of the ‘keyimage’
+includes the users private key associated with the ATXO being ‘spent’.
+Hence, if the user tries to spend the same ATXO again the same ‘keyimage’
+will be generated and the system will reject the transaction as that
+‘keyimage’ has been seen before.
+
+
+
+\begin{lstlisting}
+The following SPECTRE denominations are possible: 
+1000, 500, 400, 300, 100, 50, 50, 30, 10, 
+5, 4, 3, 1, 0.5, 0.4, 0.3, 0.1, 0.0(000000)5, 
+0.0(000000)4, 0.0(000000)3, 0.0(000000)1
+\end{lstlisting}
+
+
+
+We have seen how the use of stealth address tech can be used to solve the
+problem of address re-use and to create un-linkable transactions. Now, we
+still have the problem of UTXOs being linked together in future transactions.
+To resolve this issue Spectrecoin employs the use of ring signatures in
+transactions formed by ATXO outputs using SPECTRE.

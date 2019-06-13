@@ -12,3 +12,78 @@ XSPEC for the public coins spent in standard UTXO based transactions and
 SPECTRE for the private coins spent in a confidential ATXO based
 transactions using ring signatures. XSPEC is used in the PoSv3 consensus
 mechanism and SPECTRE is used in the PoAS consensus mechanism.
+
+
+
+\section{Dual Coin System}
+The private coin ‘subsystem’ was inspired by the principles of the Zerocoin
+protocol which can be summarised as ‘Anonymity by destruction / creation of
+basecoins’, i.e. destroy / consume one base unit, create a private token
+and create a proof that the user owns it and the system later agrees to
+re-create one base coin from that proof when requested. The Zerocoin protocol
+utilises a so called zero-knowledge proof (ZKP) to create the private coins
+and to prove ownership. Zerocoin is computationally intense and requires a
+trusted setup and we have recently seen that the Zerocoin protocol can be
+subject to certain attacks due to what can be described as flaws in the
+theory and implementation16. Some well-known Zerocoin based cryptocurrencies
+such as Zcoin, PIVX and NIX were forced to shut down their privacy system and
+work to implement fixes.
+
+
+
+The Spectrecoin network instead employs dual-key stealth address cryptography
+to facilitate the creation of privacy maintaining SPECTRE coins on the
+blockchain whilst consuming XSPEC. This is done without the trusted setup
+required for Zerocoin and without using the computationally intense Zerocoin
+cryptographic methods. Where the Zerocoin protocol use ZKP to anonymise and
+unlink the transactions, the Spectrecoin network use ring signatures17 \& 18.
+
+
+
+\begin{figure}[h]
+	\caption{Example of a parametric plot ($\sin (x), \cos(x), x$)}
+	\centering
+	\includegraphics[width=0.5\textwidth]{Wallet-BalanceDualCoin.png}
+\end{figure}
+
+
+
+The ‘dual-coin’ system can be seen as a feature allowing for complete
+transparent transactions and network audit functions if needed but
+without any privacy indebted overhead such as resource intensive
+calculations. Privacy maintaining SPECTRE can ONLY be created by
+consuming XSPEC at this time and the total supply on the network
+will always be transparent. There is no ‘bleed through’ between the
+two types of transaction outputs and no compromise in privacy.
+
+
+
+\section{XSPEC/SPECTRE Conversion}
+Each user can convert (non-private) XSPEC coins into (private) coins, SPECTRE.
+Users can then send SPECTRE to other users and split or merge the SPECTRE they
+own in any way that preserves the total value. Once SPECTRE has been created
+and matured the user will also be able to stake in private through the PoAS
+protocol. Users can also convert SPECTRE back into XSPEC, though in principle
+this is not necessary: all transactions can be made in terms of SPECTRE.
+
+
+
+Your wallet will show your XSPEC balance, your SPECTRE balance and on top the
+total balance.
+
+
+
+The core privacy technology used in Spectrecoin is: Recipient privacy: Stealth
+addresses are used to protect the recipient’s privacy. (SPECTRE only) Sender
+privacy: Ring Signatures are used to protect the sender’s privacy. (SPECTRE
+only) IP address privacy: All Spectrecoin nodes run as TOR hidden services to
+protect users IP address. Un-traceability: for each incoming transaction all
+possible senders are equiprobable. (SPECTRE only) Un-linkability: for two
+outgoing transactions it is impossible to prove the same receiver. (SPECTRE
+only)
+
+
+
+Now let’s have a look at the different features in some more detail in the
+following sections. We aim to briefly explain the background and nature of
+stealth addresses and ring-signatures and how this is used in Spectrecoin.
