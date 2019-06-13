@@ -3,3 +3,6 @@
 *.pdf
 *.gz
 *.toc
+*.iml
+*.bbl
+*.blg
