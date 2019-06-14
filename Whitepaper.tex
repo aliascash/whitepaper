@@ -7,11 +7,22 @@
 \usepackage{xfrac}
 \usepackage{listings}
 \usepackage{tabulary}
+\usepackage[multiple]{footmisc}
 \graphicspath{ {./Images/} }
 %\usepackage[a4paper, total={6in, 8in}]{geometry}
 \usepackage[a4paper, margin=2.5cm]{geometry}
 
+\usepackage[sf,pagestyles]{titlesec} % make section headings \sffamily
+% make headers \sffamily
+\newpagestyle{main}[\sffamily]{
+	\sethead{\thepage}{}{\sectiontitle}
+}
+\pagestyle{main}
+\usepackage{titling}
+% make titling elements \sffamily
+
 \begin{document}
+\sffamily
 
 \include{./TeX_files/title}
 
