@@ -20,8 +20,8 @@ design.
 
 First, let’s have a quick look at how a UTXO blockchain might be deanonymized.
 The three major factors that can reduce privacy for the user and are exploitable
-through transaction graph analysis are address re-use, change addresses and the
-merging of outputs.
+through transaction graph analysis are \textit{address re-use, change addresses 
+and the merging of outputs}.
 
 
 
@@ -45,7 +45,7 @@ information can be extracted.
 
 Address re-use also weakens the security of the coins stored in those addresses.
 Transaction signing requires 256 bytes of random data (r-value) so that the
-private key cannot be reverse engineered. If the r-value is not truly random
+private key cannot be reverse engineered. If the \textit{r-value} is not truly random
 then the private key can be determined, which can be used to sign other
 transactions for that particular address. This attack can be negated by
 not re-using addresses, as once a transaction is signed from an address,
@@ -68,28 +68,32 @@ that the addresses merged together belongs to the same person.
 
 
 
-Let’s then introduce Stealth Address techniques which allow public keys
-appearing in the blockchain to be fully disconnected from “stealth” public
-keys which can be publicised by a payee19. The public “stealth” keys
-publicised serve as a “master public key” from which “ephemeral public
-keys” are derived. The “stealth” public key is never recorded in the
+Let’s then introduce \textbf{\textit{Stealth Address techniques}} which 
+allow public keys appearing in the blockchain to be fully disconnected 
+from “\textit{stealth}” public keys which can be publicised by a 
+payee\footnote{https://www.scitepress.org/Papers/2017/62700/62700.pdf}. 
+The public “\textit{stealth}” keys publicised serve as a 
+“\textit{master public key}” from which “\textit{ephemeral public
+keys}” are derived. The “\textit{stealth}” public key is never recorded in the
 blockchain. This enables the payee to receive infinite un-linkable
 payments by publicising only one stealth address. The problem of address
-re-use is therefore solved20. A Stealth address therefore is a privacy
-technique that protects the privacy of the recipient. The first stealth
-address technique was invented by a user known as ‘bytecoin’ in 2011 in
-the Bitcointalk forum. Later improvements to stealth tech were proposed
-by van Saberhagen in 2013/14 and by Peter Todd in 2014.
+re-use is therefore 
+solved\footnote{http://www.nicolascourtois.com/bitcoin/paycoin\_privacy\_monero\_6\_ICISSP17.pdf}. 
+\textbf{A Stealth address therefore is a privacy technique that protects 
+the privacy of the recipient.} The first stealth address technique was 
+invented by a user known as ‘\textit{bytecoin}’ in 2011 in the Bitcointalk 
+forum. Later improvements to stealth tech were proposed by van Saberhagen 
+in 2013/14 and by Peter Todd in 2014.
 
 
 
 The original stealth technology had various problems and on 02/08/2014 one
-of the ShadowCash developers known as ‘rynomster’ announced a first fully
-working implementation of stealth address technology known as “dual-key
-stealth addresses” that solved some of the issues in previous proposals.
-A “dual-key stealth address” has two public keys and solves certain problems
-associated with previous schemes. For a full and in-depth explanation of
-stealth addresses see the paper cited above.
+of the ShadowCash developers known as ‘\textit{rynomster}’ announced a 
+first fully working implementation of stealth address technology known as 
+“\textit{dual-key stealth addresses}” that solved some of the issues in 
+previous proposals. A “\textit{dual-key stealth address}” has two public 
+keys and solves certain problems associated with previous schemes. For a 
+full and in-depth explanation of stealth addresses see the paper cited above.
 
 
 
@@ -119,40 +123,41 @@ every payment but If you receive for example 10 transactions using your
 stealth address you will have 10 UTXOs available to form further
 transactions. If you then use some or all of the UTXOs to form a transaction
 an observer will be able to link the UTXOs together and assume that they all
-belong to one user (merging of outputs). Furthermore, an attacker could
+belong to one user (\textit{merging of outputs}). Furthermore, an attacker could
 create a number of dust transactions with a stealth address and then monitor
 the blockchain to see if the user ever joins those UTXOs together or with
 others, in order to make an input to a higher value transaction in the future.
-Blockchain analysis can easily link this. This is the reason why any
-cryptocurrency that rely on stealth addresses ONLY is not private.
+Blockchain analysis can easily link this. \textbf{This is the reason why any
+cryptocurrency that rely on stealth addresses ONLY is not private.}
 
 
 
 \subsection{Anonymous Spectrecoin Conversion}
-Dual-key Stealth technology is used in the process to create anonymous SPECTRE
-by consuming the equivalent value of XSPEC. The creation of SPECTRE involves
-the creation of an ATXO with a bundled one-time key-pair that will allow that
-ATXO to be ‘spent’ by providing a valid ring signature using your remaining
-public key corresponding to the ATXO you previously created and the
-corresponding ‘keyimage’21. The fact that an ATXO has been ‘spent’ is only
-known to the sender and an observer cannot determine if the ATXO has been
-‘spent’.
+Dual-key Stealth technology is used in the process to create anonymous 
+\textbf{SPECTRE} by consuming the equivalent value of \textbf{XSPEC}. The 
+creation of \textbf{SPECTRE} involves the creation of an ATXO with a 
+bundled one-time key-pair that will allow that ATXO to be ‘\textit{spent}’ 
+by providing a valid ring signature using your remaining public key 
+corresponding to the ATXO you previously created and the corresponding 
+‘\textit{keyimage}’\footnote{https://monero.stackexchange.com/questions/2883/what-is-a-key-image}. 
+The fact that an ATXO has been ‘\textit{spent}’ is only known to the sender 
+and an observer cannot determine if the ATXO has been ‘\textit{spent}’.
 
 
 
 \subsection{Keyimage}
-The ‘keyImage’ is the result of a cryptographic one-way function derived
-from a user’s one-time keypair. The ‘keyimage’ is unique to the ATXO
+The ‘\textit{keyImage}’ is the result of a cryptographic one-way function derived
+from a user’s one-time keypair. The ‘\textit{keyimage}’ is unique to the ATXO
 contributing the value to the new ATXO being created in an anonymous
-transaction. The ‘keyimage’ is then recorded in the blockchain to prevent
+transaction. The ‘\textit{keyimage}’ is then recorded in the blockchain to prevent
 double spends, but without revealing which ATXO is the value-contributing
-member in the ring signature. Although the ‘keyimage’ is recorded in the
+member in the ring signature. Although the ‘\textit{keyimage}’ is recorded in the
 blockchain it cannot be reverse engineered due to the one-wayness of the
-cryptographic function that generated it. The calculation of the ‘keyimage’
-includes the users private key associated with the ATXO being ‘spent’.
-Hence, if the user tries to spend the same ATXO again the same ‘keyimage’
+cryptographic function that generated it. The calculation of the ‘\textit{keyimage}’
+includes the users private key associated with the ATXO being ‘\textit{spent}’.
+Hence, if the user tries to spend the same ATXO again the same ‘\textit{keyimage}’
 will be generated and the system will reject the transaction as that
-‘keyimage’ has been seen before.
+‘\textit{keyimage}’ has been seen before.
 
 
 
@@ -169,4 +174,4 @@ We have seen how the use of stealth address tech can be used to solve the
 problem of address re-use and to create un-linkable transactions. Now, we
 still have the problem of UTXOs being linked together in future transactions.
 To resolve this issue Spectrecoin employs the use of ring signatures in
-transactions formed by ATXO outputs using SPECTRE.
+transactions formed by ATXO outputs using \textbf{SPECTRE}.

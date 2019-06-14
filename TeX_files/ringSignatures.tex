@@ -1,39 +1,40 @@
 \section{Ring Signatures}
 In a standard UTXO transaction the sender signs the transactions using his/her
 private key and the signatory can be explicitly determined and identified. In
-cryptography, a ring signature is a type of digital signature that can be
+cryptography, \textbf{a ring signature} is a type of digital signature that can be
 performed by any member of a defined group of users that each have the required
-keys. A distinctive ring signature is produced through a process that combines
+keys. A distinctive \textbf{ring signature} is produced through a process that combines
 the keys of all possible signers and other values and which are then subject to
 a hash function.
 
 
 
-In cryptography a ring signature is a form of a non-interactive zero knowledge
-proof22. In layman’s terms, what this means is simply that you can prove the
+In cryptography a ring signature is a form of a \textit{non-interactive 
+zero knowledge proof}\footnote{https://en.wikipedia.org/wiki/Non-interactive\_zero-knowledge\_proof}. 
+In layman’s terms, what this means is simply that you can prove the
 correctness of a statement/transaction to a verifier without leaking any additional
-information by just using a shared common reference string (public key).
+information by just using a shared common reference string (\textit{public key}).
 This system must include cryptographic completeness, soundness and zero-knowledge.
 
 
 
-Completeness means that if the statement is correct, then the verifier will
-always accept. Soundness is a property of such a system that requires that
+\underline{Completeness} means that if the statement is correct, then the verifier will
+always accept. \underline{Soundness} is a property of such a system that requires that
 no prover can make the verifier accept a false or incorrect statement. If the
 statement is incorrect or false, then the verifier will always reject. The
-last part is zero knowledge. It is not possible to gain any extra information
+last part is \underline{zero knowledge}. It is not possible to gain any extra information
 from the proof itself for any malicious verifier except for the correctness of
 the statement.
 
 
 
 This offers a group member a level of anonymity not attainable through generic
-digital signature schemes. This is a property known as ‘plausible deniability’,
+digital signature schemes. This is a property known as ‘\textit{plausible deniability}’,
 or anonymity with respect to an anonymity set. With a ring size of 10 for example
 there are 10 possible signatories, i.e. 10 public keys and an observer cannot
-determine which one corresponds to the SPECTRE spent in the transaction. This
+determine which one corresponds to the \textbf{SPECTRE} spent in the transaction. This
 is only known to the sender. This protects the privacy of the sender. With every
-transaction using a ring-signature the network ‘transactional entropy’ increases
+transaction using a ring-signature the network ‘\textit{transactional entropy}’ increases
 and it becomes increasingly hard to link input/output on the blockchain.
 
 
@@ -41,10 +42,10 @@ and it becomes increasingly hard to link input/output on the blockchain.
 Look at it like this; scattered along the Spectrecoin blockchain are ATXOs of
 various denominations from 1000 to 0.00000001 SPECTRE. These ATXOs may be spent
 or unspent but this cannot be determined by an observer. The proof of an ATXO
-being spent is formed on an ad-hoc basis through the creation of a ‘keyimage’
+being spent is formed on an ad-hoc basis through the creation of a ‘\textit{keyimage}’
 and there is nothing contained within the data of the ATXO itself or the
 transaction data written to the blockchain that signifies if it has ever been
-‘spent’. In a standard UTXO transaction on the other hand an observer can
+‘\textit{spent}’. In a standard UTXO transaction on the other hand an observer can
 explicitly determine that an UTXO has indeed been spent to create a new UTXO.
 
 
@@ -57,19 +58,20 @@ UTXO and ATXO.
 \subsection{Standard UTXO transaction}
 
 \begin{figure}[h]
-	\caption{Example of a parametric plot ($\sin (x), \cos(x), x$)}
+	\caption{Standard UTXO transaction}
 	\centering
 	\includegraphics[width=\textwidth]{Std-UTXO-Transaction.png}
 \end{figure}
 
+
+
 On the blockchain there is a \textbf{\underline{direct}} correlation
-between the inputs and the
-outputs, and all the transactions can be traced back to the genesis
-transactions. This is still the case even if a mixing strategy is used,
-such as in DASH. There are increasingly sophisticated methods to analyse
-blockchain data and this is a growth industry. You should consider any
-standard UTXO transactions to be non-anonymous and public, whether with
-Spectrecoin or Bitcoin.
+between the inputs and the outputs, and all the transactions can be 
+traced back to the genesis transactions. This is still the case even 
+if a mixing strategy is used, such as in DASH. There are increasingly 
+sophisticated methods to analyse blockchain data and this is a growth 
+industry. You should consider any standard UTXO transactions to be 
+non-anonymous and public, whether with Spectrecoin or Bitcoin.
 
 
 
@@ -78,7 +80,7 @@ Spectrecoin or Bitcoin.
 
 
 \begin{figure}[h]
-	\caption{Example of a parametric plot ($\sin (x), \cos(x), x$)}
+	\caption{SPECTRE ATXO transaction}
 	\centering
 	\includegraphics[width=\textwidth]{Anonymous-ATXO-Transaction.png}
 \end{figure}
@@ -127,7 +129,7 @@ In this way Spectrecoin protects the privacy of both the sender and the receiver
 
 
 \subsection{Ring-Signature formula}
-Spectrecoin uses a ring-signature formula developed by Adam Back. He created a formula based on the
+Spectrecoin uses a ring-signature formula developed by Dr. Adam Back. He created a formula based on the
 traceable ring signature described in the CryptoNote white-paper\footnote{https://cryptonote.org/whitepaper.pdf} using maths based on the paper "1-
 out-of-n Signatures from a Variety of Keys"\footnote{https://www.researchgate.net/publication/221326919\_1-out-of-n\_Signatures\_from\_a\_Variety\_of\_Keys} by Abe, Ohkubo and Suzuki. He was able to create a linkable ring signature which tends to be \sfrac{1}{2} of the size of the CryptoNote ring signature as the signature is 3+n
 values vs. 2+2n values. A.Back showed how to add traceability in a way that made it compatible with CryptoNote\footnote{https://bitcointalk.org/index.php?topic=972541.msg10619684}. The original description contains 4 parts (\textbf{KEYGEN}, \textbf{SIG}, \textbf{VERIFY}, \textbf{LINK}) and is summarized here for comparison:
