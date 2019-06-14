@@ -25,18 +25,22 @@ utilises a so called zero-knowledge proof (ZKP) to create the private coins
 and to prove ownership. Zerocoin is computationally intense and requires a
 trusted setup and we have recently seen that the Zerocoin protocol can be
 subject to certain attacks due to what can be described as flaws in the
-theory and implementation16. Some well-known Zerocoin based cryptocurrencies
+theory and 
+implementation\footnote{https://www.chaac.tf.fau.eu/2018/04/12/zerocoinzcoinpivxzoinsmartcashhexxcoin-attack/}. 
+Some well-known Zerocoin based cryptocurrencies
 such as Zcoin, PIVX and NIX were forced to shut down their privacy system and
 work to implement fixes.
 
 
 
 The Spectrecoin network instead employs dual-key stealth address cryptography
-to facilitate the creation of privacy maintaining SPECTRE coins on the
-blockchain whilst consuming XSPEC. This is done without the trusted setup
+to facilitate the creation of privacy maintaining \textbf{SPECTRE} coins on the
+blockchain whilst consuming \textbf{XSPEC}. This is done without the trusted setup
 required for Zerocoin and without using the computationally intense Zerocoin
 cryptographic methods. Where the Zerocoin protocol use ZKP to anonymise and
-unlink the transactions, the Spectrecoin network use ring signatures17 \& 18.
+unlink the transactions, 
+\textbf{the Spectrecoin network use ring signatures}\footnote{https://people.csail.mit.edu/rivest/pubs/RST01.pdf/} 
+\& \footnote{https://arxiv.org/pdf/1612.01188.pdf}.
 
 
 
@@ -48,39 +52,48 @@ unlink the transactions, the Spectrecoin network use ring signatures17 \& 18.
 
 
 
-The ‘dual-coin’ system can be seen as a feature allowing for complete
+The ‘\textit{dual-coin}’ system can be seen as a feature allowing for complete
 transparent transactions and network audit functions if needed but
 without any privacy indebted overhead such as resource intensive
-calculations. Privacy maintaining SPECTRE can ONLY be created by
-consuming XSPEC at this time and the total supply on the network
-will always be transparent. There is no ‘bleed through’ between the
+calculations. Privacy maintaining \textbf{SPECTRE} can ONLY be created by
+consuming \textbf{XSPEC} at this time and the total supply on the network
+will always be transparent. There is no ‘\textit{bleed through}’ between the
 two types of transaction outputs and no compromise in privacy.
 
 
 
 \subsection{XSPEC/SPECTRE Conversion}
-Each user can convert (non-private) XSPEC coins into (private) coins, SPECTRE.
-Users can then send SPECTRE to other users and split or merge the SPECTRE they
-own in any way that preserves the total value. Once SPECTRE has been created
+Each user can convert (\textit{non-private}) \textbf{XSPEC} coins into (\textit{private}) coins, \textbf{SPECTRE}.
+Users can then send \textbf{SPECTRE} to other users and split or merge the \textbf{SPECTRE} they
+own \underline{in any way that preserves the total value}. Once \textbf{SPECTRE} has been created
 and matured the user will also be able to stake in private through the PoAS
-protocol. Users can also convert SPECTRE back into XSPEC, though in principle
-this is not necessary: all transactions can be made in terms of SPECTRE.
+protocol. Users can also convert \textbf{SPECTRE} back into \textbf{XSPEC}, though in principle
+this is not necessary: all transactions can be made in terms of \textbf{SPECTRE}.
 
 
 
-Your wallet will show your XSPEC balance, your SPECTRE balance and on top the
-total balance.
+\begin{figure}[h]
+	\caption{Your wallet will show your \textbf{XSPEC} balance, your 
+		\textbf{SPECTRE} balance and on top the total balance.}
+	\centering
+	\includegraphics[width=\textwidth]{WalletUI-3x-2.png}
+\end{figure}
 
 
 
-The core privacy technology used in Spectrecoin is: Recipient privacy: Stealth
-addresses are used to protect the recipient’s privacy. (SPECTRE only) Sender
-privacy: Ring Signatures are used to protect the sender’s privacy. (SPECTRE
-only) IP address privacy: All Spectrecoin nodes run as TOR hidden services to
-protect users IP address. Un-traceability: for each incoming transaction all
-possible senders are equiprobable. (SPECTRE only) Un-linkability: for two
-outgoing transactions it is impossible to prove the same receiver. (SPECTRE
-only)
+
+The core privacy technology used in Spectrecoin is: 
+
+
+
+\begin{description}
+	\item[Recipient privacy:] Stealth addresses are used to protect the recipient’s privacy. (SPECTRE only)
+	\item[Sender privacy:] Ring Signatures are used to protect the sender’s privacy. (SPECTRE only)
+	\item[IP address privacy:] All Spectrecoin nodes run as TOR hidden services to protect users IP address.
+	\item[Un-traceability:] for each incoming transaction all possible senders are equiprobable. (SPECTRE only)
+	\item[Un-linkability:] for two outgoing transactions it is impossible to prove the same receiver. (SPECTRE only)
+\end{description}
+         
 
 
 
