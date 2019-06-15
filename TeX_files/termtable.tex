@@ -1,22 +1,31 @@
-\begin{table}[]
+\section{Commonly Used Terms}
+We have listed the most commonly used terms you are likely to come across in this document.
+
+\begin{table}[h]
 \resizebox{\textwidth}{!}{%
 \begin{tabular}{@{}ll@{}}
-\cmidrule(l){2-2}
-TEST & This is juts a test \\ \cmidrule(l){2-2} 
- &  \\
- &  \\
- &  \\ \midrule
- &  \\
- &  \\
- &  \\
- &  \\
- &  \\
- &  \\
- &  \\
- &  \\
- &  \\
- &  \\
- & 
+\midrule
+\textbf{BLOCKCHAIN} & A shared, immutable ledger for recording the history of transactions in blocks. \\ \midrule
+\textbf{BLOCK} & A defined data structure that contains a record of transaction data and other values. \\ \midrule
+\textbf{XSPEC} & The symbol (ticker) for Spectrecoin and also the name of the public coins on the blockchain. \\ \midrule
+\textbf{SPECTRE} & The name used for the private coins on the Spectrecoin blockchain. \\ \midrule
+\textbf{UTXO} & Unspent Transaction Output that can be spent as an input in a new transaction. \\ \midrule
+\textbf{ATXO} & UTXO that can be spent as in input in a private transaction using a ring signature. \\ \midrule
+\textbf{KEYIMAGE} & A unique value associated with a specific ATXO calculated using a private key. \\ \midrule
+SPENT (UTXO) & A UTXO is spent when it has been ‘consumed’ as an input in a new transaction. \\ \midrule
+SPENT (ATXO) & An ATXO is spent when the related ‘keyimage’ has been included in a valid ring signature. \\ \midrule
+HASH FUNCTION & A mathematical one-way function that generates fixed size data from an arbitrary input. \\ \midrule
+HASH VALUE & A numeric value of a fixed length that uniquely identifies the data input in a hash function. \\ \midrule
+BLOCK HASH & The hash of a block's header. \\ \midrule
+KERNEL HASH & A hash value used in Proof-of-Stake. \\ \midrule
+MIXIN & A chaff or dummy ATXO not being spent in a current transaction, used in a ring signature. \\ \midrule
+TOR & The Onion Router. A layered network that attempts to hide your IP address. \\ \midrule
+VIN & The ‘collection’ of input data for a transaction, including the UTXOs/ATXOs to be consumed. \\ \midrule
+VOUT & The ‘collection’ of output data for a transaction, including the new UTXOs/ATXOs generated. \\ \midrule
+POS & Proof-of-Stake. A consensus mechanism introduced with Peercoin. \\ \midrule
+POSV3 & Proof-of-Stake v3. Consensus mechanism developed by the Blackcoin developers. \\ \midrule
+POAS & Proof-of-Anonymous-Stake. Privacy consensus mechanism introduced by the Spectrecoin developers. \\ \midrule
+& 
 \end{tabular}%
 }
 \end{table}

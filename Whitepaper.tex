@@ -12,12 +12,16 @@
 \usepackage{titling}
 \usepackage{booktabs}
 \usepackage{graphicx}
+\usepackage{float}
 \pagenumbering{arabic}
 \graphicspath{ {./Images/} }
 \usepackage[a4paper, margin=2.5cm]{geometry}
-\usepackage[sf,pagestyles]{titlesec}
 \pagestyle{fancy}
 \fancyhf{}
+
+% Fix "Package Fancyhdr Warning: \headheight is too small (12.0pt):"
+\setlength{\headheight}{15pt} 
+
 \lhead{Spectrecoin White Paper}
 \cfoot{Page \thepage}
 \usepackage{titling}
