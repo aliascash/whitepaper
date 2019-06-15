@@ -1,27 +1,27 @@
 \section{Spectrecoin Privacy Features}
 Before we go on to explain some of the features and technologies of
 Spectrecoin in more detail, we will give you a short overview of the
-privacy technology used. The Spectrecoin blockchain is a ‘dual-coin’
+privacy technology used. The Spectrecoin blockchain is a ‘\textit{dual-coin}’
 system or a system where two distinct types of transaction outputs can
-exist in the same block. Both non-private or standard UTXOs (hereafter
-referred to as public coins or XSPEC) and private coins or ATXOs (hereafter
-referred to as private coins or SPECTRE) exists side by side in the
-block-chain. Transactions can be carried out with both public and private
-coins and they are interchangeable and independent. We introduce the terms
-XSPEC for the public coins spent in standard UTXO based transactions and
-SPECTRE for the private coins spent in a confidential ATXO based
-transactions using ring signatures. XSPEC is used in the PoSv3 consensus
-mechanism and SPECTRE is used in the PoAS consensus mechanism.
+exist in the same block. Both non-private or standard UTXOs (\textit{hereafter
+referred to as public coins or \textbf{XSPEC}}) and private coins or ATXOs 
+(\textit{hereafter referred to as private coins or \textbf{SPECTRE}}) exists 
+side by side in the block-chain. Transactions can be carried out with both 
+public and private coins and they are interchangeable and independent. We 
+introduce the terms \textbf{XSPEC} for the public coins spent in standard UTXO based 
+transactions and \textbf{SPECTRE} for the private coins spent in a confidential ATXO based
+transactions using ring signatures. \textbf{XSPEC} is used in the PoSv3 consensus
+mechanism and \textbf{SPECTRE} is used in the PoAS consensus mechanism.
 
 
 
 \subsection{Dual Coin System}
-The private coin ‘subsystem’ was inspired by the principles of the Zerocoin
-protocol which can be summarised as ‘Anonymity by destruction / creation of
-basecoins’, i.e. destroy / consume one base unit, create a private token
+The private coin ‘\textit{subsystem}’ was inspired by the principles of the Zerocoin
+protocol which can be summarised as ‘\textit{Anonymity by destruction / creation of
+basecoins}’, i.e. destroy / consume one base unit, create a private token
 and create a proof that the user owns it and the system later agrees to
 re-create one base coin from that proof when requested. The Zerocoin protocol
-utilises a so called zero-knowledge proof (ZKP) to create the private coins
+utilises a so called \textit{zero-knowledge proof} (ZKP) to create the private coins
 and to prove ownership. Zerocoin is computationally intense and requires a
 trusted setup and we have recently seen that the Zerocoin protocol can be
 subject to certain attacks due to what can be described as flaws in the
@@ -39,8 +39,7 @@ blockchain whilst consuming \textbf{XSPEC}. This is done without the trusted set
 required for Zerocoin and without using the computationally intense Zerocoin
 cryptographic methods. Where the Zerocoin protocol use ZKP to anonymise and
 unlink the transactions, 
-\textbf{the Spectrecoin network use ring signatures}\footnote{https://people.csail.mit.edu/rivest/pubs/RST01.pdf/} 
-\& \footnote{https://arxiv.org/pdf/1612.01188.pdf}.
+\textbf{the Spectrecoin network use ring signatures}\footnote{https://people.csail.mit.edu/rivest/pubs/RST01.pdf/}\footnote{https://arxiv.org/pdf/1612.01188.pdf}.
 
 
 

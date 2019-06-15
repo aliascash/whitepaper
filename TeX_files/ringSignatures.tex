@@ -113,26 +113,38 @@ the ATXOs have not been part of any ring size 1 transaction.
 
 \subsection{Minimum Ring Size}
 
-A minimum ring size of 10 is being enforced as part of the consensus since Spectrecoin v3.x.
+A minimum ring size of 10 is being enforced as part of the consensus since 
+Spectrecoin v3.x.
 
 
 
-Any ATXO used in a ring size 1 transaction will be marked as ‘compromised’ and will not be selected as a
-‘mixin’ in any future ring signature transaction.
+Any ATXO used in a ring size 1 transaction will be marked as 
+‘\textit{compromised}’ and will not be selected as a ‘\textit{mixin}’ 
+in any future ring signature transaction.
 
 
 
-We have seen how dual-key stealth address techniques are used to create ATXOs on the Spectrecoin
-blockchain with bundled one-time key pair that can only be ‘spent’ by providing a valid ring signature.
-In this way Spectrecoin protects the privacy of both the sender and the receiver.
+\textbf{We have seen how dual-key stealth address techniques are used to 
+create ATXOs on the Spectrecoin blockchain with bundled one-time key pair 
+that can only be ‘spent’ by providing a valid ring signature. In this way 
+Spectrecoin protects the privacy of both the sender and the receiver.}
 
 
 
 \subsection{Ring-Signature formula}
-Spectrecoin uses a ring-signature formula developed by Dr. Adam Back. He created a formula based on the
-traceable ring signature described in the CryptoNote white-paper\footnote{https://cryptonote.org/whitepaper.pdf} using maths based on the paper "1-
-out-of-n Signatures from a Variety of Keys"\footnote{https://www.researchgate.net/publication/221326919\_1-out-of-n\_Signatures\_from\_a\_Variety\_of\_Keys} by Abe, Ohkubo and Suzuki. He was able to create a linkable ring signature which tends to be \sfrac{1}{2} of the size of the CryptoNote ring signature as the signature is 3+n
-values vs. 2+2n values. A.Back showed how to add traceability in a way that made it compatible with CryptoNote\footnote{https://bitcointalk.org/index.php?topic=972541.msg10619684}. The original description contains 4 parts (\textbf{KEYGEN}, \textbf{SIG}, \textbf{VERIFY}, \textbf{LINK}) and is summarized here for comparison:
+Spectrecoin uses a ring-signature formula developed by Dr. Adam Back. He 
+created a formula based on the traceable ring signature described in the 
+CryptoNote white-paper\footnote{https://cryptonote.org/whitepaper.pdf} 
+using maths based on the paper "\textit{1-out-of-n Signatures from a Variety of Keys}"\footnote{https://www.researchgate.net/publication/221326919\_1-out-of-n\_Signatures\_from\_a\_Variety\_of\_Keys} 
+by Abe, Ohkubo and Suzuki. He was able to create a linkable ring signature 
+which tends to be \sfrac{1}{2} of the size of the CryptoNote ring signature 
+as the signature is 3+n values vs. 2+2n values. 
+
+
+
+Dr. A. Back showed how to add traceability in a way that made it compatible with CryptoNote\footnote{https://bitcointalk.org/index.php?topic=972541.msg10619684}. 
+The original description contains 4 parts (\textbf{KEYGEN}, \textbf{SIG}, 
+\textbf{VERIFY}, \textbf{LINK}) and is summarized here for comparison:
 
 
 \hfill \break\textbf{Definitions}:
@@ -151,7 +163,8 @@ values vs. 2+2n values. A.Back showed how to add traceability in a way that made
 
 
 \hfill \break\textbf{KEYGEN}: 
-The signer selects a secret key $x \in [1, l-1]$ and calculates a public key $P$, as well as the key-image $I$ with the following equations:
+The signer selects a secret key $x \in [1, l-1]$ and calculates a public 
+key $P$, as well as the key-image $I$ with the following equations:
 
 \begin{equation}
 \begin{split}
@@ -161,7 +174,8 @@ I &= x\mathcal{H}_p(P)\\
 \end{equation}
 
 \textbf{SIG}: 
-The signer selects a set $S'$ of $n$ other users public keys $P_i$, and adds his own public key to the set. 
+The signer selects a set $S'$ of $n$ other users public keys $P_i$, and 
+adds his own public key to the set. 
 
 \begin{equation}
 \begin{split}
@@ -170,7 +184,10 @@ S &= S' \cup \{P_s\}\\
 \end{split}
 \end{equation}
 
-Note that the public key $P_{i=s}$ is the signer's own public key, while the others are random selected public keys that will be used in the ring signature. The index $s$ is the signer secret index. The signer then pics $n+1$ random private keys $q_i$ and $n$ private keys $w_i$
+Note that the public key $P_{i=s}$ is the signer's own public key, while 
+the others are random selected public keys that will be used in the ring 
+signature. The index $s$ is the signer secret index. The signer then pics 
+$n+1$ random private keys $q_i$ and $n$ private keys $w_i$.
 
 \begin{equation}
 \begin{split}
@@ -232,7 +249,8 @@ The resulting signature $\sigma$ is then
 \sigma = (I, c_1, ..., c_n, r_1, ..., r_n)
 \]
 
-One can immediatly see that the signature $\sigma$ from the Cryptonote whitepaper has $2(n+1)$ values for $c_i$ and $r_i$
+One can immediatly see that the signature $\sigma$ from the Cryptonote 
+whitepaper has $2(n+1)$ values for $c_i$ and $r_i$.
 
 \hfill \break\textbf{VERIFY}: 
 The first step is to apply the inverse transformation.
@@ -244,7 +262,6 @@ R_i' &= r_i*\mathcal{H}_p(P_i)+c_iI\\
 \end{split}
 \end{equation}
 
-
 A verifier now checks that the following condition holds:
 
 \begin{equation}
@@ -254,12 +271,15 @@ A verifier now checks that the following condition holds:
 \end{equation}
 
 \hfill \break\textbf{LINK}: 
-This step is only applied when the previous step succeeds. 
-The verifier uses a set $\mathcal{I}$ of previous signatures and rejects the signature $\sigma = (I,... )$ if $I \in \mathcal{I}$
+This step is only applied when the previous step succeeds. The verifier 
+uses a set $\mathcal{I}$ of previous signatures and rejects the signature 
+$\sigma = (I,... )$ if $I \in \mathcal{I}$.
 
-\hfill \break Adam Back's variation, and the version of the ring-signature algorithm used by spectrecoin, is as follows:
+\hfill \break Dr. Adam Back's variation, and the version of the ring-signature 
+algorithm used by spectrecoin, is as follows:
 
-\hfill \break\textbf{KEYGEN}: Like above, pick a random private key $x \in [1..l-1]$ and calculate:
+\hfill \break\textbf{KEYGEN}: Like above, pick a random private key 
+$x \in [1..l-1]$ and calculate:
 
 \begin{equation}
 \begin{split}
@@ -268,7 +288,10 @@ I &= x\mathcal{H}_p(P)\\
 \end{split}
 \end{equation}
 
-\hfill \break\textbf{SIG}: Pick $n$ random public keys $P_i$ from other users, generate $n$ random private keys $s_i \in [1...l-1]$ as well as a private key $\alpha \in [1..l-1]$ for the signer with index $j, 0<=j<=n$. This gives you the following structure:
+\hfill \break\textbf{SIG}: Pick $n$ random public keys $P_i$ from other 
+users, generate $n$ random private keys $s_i \in [1...l-1]$ as well as a 
+private key $\alpha \in [1..l-1]$ for the signer with index $j, 0<=j<=n$. 
+This gives you the following structure:
 
 \begin{equation}
 \begin{split}
@@ -277,7 +300,9 @@ I &= x\mathcal{H}_p(P)\\
 \end{split}
 \end{equation}
 
-\hfill \break NOTE that $s_j$ is to be calculated (see below) and $P_j$ is the public key of the signer. The next step is to calculate the parameters $c_i$ recursively yielding the vector $[c_0, ... ,c_j, ..., c_n]$
+\hfill \break NOTE that $s_j$ is to be calculated (see below) and $P_j$ 
+is the public key of the signer. The next step is to calculate the parameters 
+$c_i$ recursively yielding the vector $[c_0, ... ,c_j, ..., c_n]$.
 
 \begin{equation}
 \begin{split}
@@ -288,11 +313,18 @@ I &= x\mathcal{H}_p(P)\\
 \end{split}
 \end{equation}
 
-\hfill \break The formula shows that we start to calculate at the position $j+1$ , where $j$ represents the signer's index. To keep the index $i$ of $c_i$ within the allowed range, we have to take the $mod$ of the number of signers. Effectively we calculate the sequence $c_{j+1}, c_{j+2}, ..., c_n, c_0, c_1, ... c_j$
+\hfill \break The formula shows that we start to calculate at the position 
+$j+1$ , where $j$ represents the signer's index. To keep the index $i$ of 
+$c_i$ within the allowed range, we have to take the $mod$ of the number of 
+signers. Effectively we calculate the sequence 
+$c_{j+1}, c_{j+2}, ..., c_n, c_0, c_1, ... c_j$
  
-\hfill \break Next is to find the $s_j$ value: Adam argues that since $\alpha G = s_jG+c_jP_j$ , then $\alpha = s_j+c_jx_j$ or $s_j = \alpha - c_jx_j\quad mod\quad n.$
+\hfill \break Next is to find the $s_j$ value: Adam argues that since 
+$\alpha G = s_jG+c_jP_j$ , then $\alpha = s_j+c_jx_j$ or 
+$s_j = \alpha - c_jx_j\quad mod\quad n.$
 
-\hfill \break The signature $\sigma$ based on this approach is than given by $\sigma = (m,I_j,c_1,s_1,...,s_n)$
+\hfill \break The signature $\sigma$ based on this approach is than given 
+by $\sigma = (m,I_j,c_1,s_1,...,s_n)$
 
 \hfill \break\textbf{VERIFY}: 
 
@@ -312,7 +344,9 @@ Then we check if $c_{n+1}=c_1$.
 Like above, we reject duplicate $I_j$ values.
 
 
-\hfill \break As we can see from the new signature $\sigma = (m,I_j,c_1,s_1,...,s_n)$, this version of the ring signature uses only 1/2 of the size of the Cryptonote ring signature.
+\hfill \break As we can see from the new signature $\sigma = 
+(m,I_j,c_1,s_1,...,s_n)$, this version of the ring signature 
+uses only 1/2 of the size of the Cryptonote ring signature.
 
 \subsection{The ‘All\_Spent’ Dilemma}
 A ‘\textit{special}‘ situation could occur where all the ATXOs available for a
