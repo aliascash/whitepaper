@@ -8,15 +8,18 @@
 \usepackage{listings}
 \usepackage{tabulary}
 \usepackage[multiple]{footmisc}
+\usepackage{fancyhdr}
+\usepackage{titling}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\pagenumbering{arabic}
 \graphicspath{ {./Images/} }
-%\usepackage[a4paper, total={6in, 8in}]{geometry}
 \usepackage[a4paper, margin=2.5cm]{geometry}
-\usepackage[sf,pagestyles]{titlesec} % make section headings \sffamily
-% make headers \sffamily
-\newpagestyle{main}[\sffamily]{
-	\sethead{\thepage}{}{\sectiontitle}
-}
-\pagestyle{main}
+\usepackage[sf,pagestyles]{titlesec}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Spectrecoin White Paper}
+\cfoot{Page \thepage}
 \usepackage{titling}
 % make titling elements \sffamily
 
@@ -35,6 +38,7 @@
 \include{./TeX_files/acknowledgements}
 \include{./TeX_files/disclaimer}
 \include{./TeX_files/notes}
+\include{./TeX_files/termtable}
 \include{./TeX_files/usedTerms}
 \include{./TeX_files/introduction}
 \include{./TeX_files/basicProperties}
