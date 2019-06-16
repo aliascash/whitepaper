@@ -8,9 +8,9 @@ and is the best-known source of information on the PoSv3 protocol.
 The Spectrecoin PoSv3 implementation adheres completely to this protocol
 description for both blocks and transactions and so the explanation from
 ‘\textit{Earlz}’ can be used for Spectrecoin.
-
-
-
+\\
+\\
+\noindent
 The core concept of Proof-of-Stake (PoS) is very similar to that of
 Proof-of-Work (PoW), a lottery. However, the big difference is that,
 in PoS, it is not possible to "get more tickets" to the lottery by
@@ -25,8 +25,12 @@ additional consensus rules in order to realise it's objectives. First,
 unlike in PoW, the coinbase transaction (the first transaction in the
 block) must be empty and the reward must be 0 tokens. Instead, to reward
 stakers, there is a special "staking transaction" which must always be
-the 2nd transaction in the block. A ‘staking transaction’ is defined as
-any transaction that:
+the 2nd transaction in the block.
+\\
+\\
+\noindent
+\underline{A ‘staking transaction’ is defined as
+any transaction that:}
 
 
 \begin{itemize}
@@ -35,10 +39,8 @@ any transaction that:
 	\item It's second VOUT must not be empty
 \end{itemize}
 
-
-
-Furthermore, ‘staking transactions’ must abide by these rules to be valid
-in a block:
+\underline{Furthermore, ‘staking transactions’ must abide by these rules to be valid
+in a block:}
 \begin{itemize}
 	\item The second VOUT must be either a pubkey (not pubkeyhash!) script,
 	or an OP\_RETURN script that is unspendable (data-only) but stores data
@@ -53,9 +55,8 @@ in a block:
 	\item Though more VINs can used and spent in a ‘staking transaction’,
 	the first VIN is the only one used for consensus parameters
 \end{itemize}
-
-
-
+\newpage
+\noindent
 These rules ensure that the stake transaction is easy to identify and
 ensures that it gives enough info to the blockchain to validate the block.
 The empty VOUT method is not the only way staking transactions could have
@@ -63,10 +64,10 @@ been identified, but this was the original design from Sunny
 King\footnote{https://whitepaperdatabase.com/peercoin-ppc-whitepaper/}
 and has worked well enough. Now we understand what a ‘staking transaction’
 is, and what rules such transaction must abide by.
-
-
-
-The next part is to understand the rules for PoSv3 blocks:
+\\
+\\
+\noindent
+\underline{The next part is to understand the rules for PoSv3 blocks:}
 \begin{itemize}
 	\item Must have exactly 1 staking transaction.
 	\item The staking transaction must be the second transaction in the block.
@@ -87,17 +88,18 @@ The next part is to understand the rules for PoSv3 blocks:
 \end{itemize}
 
 
-
+\noindent
 There are a lot of details here that we'll cover in a bit. The most important
 part that really makes PoS effective lies in the "kernel hash". The kernel
 hash is used similar to PoW (if hash meets difficulty, then block is valid).
-
-
-
+\\
+\\
+\noindent
 However, the kernel hash is not directly modifiable in the context of the
 current block. We will first cover exactly what goes into these structures
 and mechanisms, and later explain why this design is exactly this way, and
-what unexpected consequences can come from minor changes to it
+what unexpected consequences can come from minor changes to it.
+\newpage
 
 
 
@@ -126,39 +128,36 @@ pieces of data (in order):}
 	\item The previous block's stake modifier (the genesis block's stake
 	modifier is 0)
 \end{itemize}
-
-
-
+\noindent
 The only way to change the current kernel hash (in order to mine a block),
 is thus to either change your "\textit{prevout}", or to change the current
 block time.
-
-
-
+\\
+\\
+\noindent
 A single wallet typically contains many UTXOs. The balance of the wallet is
 basically the total amount of all the UTXOs that can be spent by the wallet.
 This is of course the same in a PoS wallet. This is important though, because
 any output can be used for staking. One of these outputs are what can become
 the "\textit{prevout}" in a staking transaction to form a valid PoS block.
-
-
-
+\\
+\\
+\noindent
 Finally, there is one more aspect that is changed in the mining process of a
 PoS block. The difficulty is weighted against the number of coins in the
 staking transaction. The PoS difficulty ends up being twice as easy to achieve
 when staking 2 coins, compared to staking just 1 coin.
-
-
-
+\\
+\\
+\noindent
 If this were not the case, then it would encourage creating many tiny UTXOs
 for staking, which would bloat the size of the blockchain and ultimately
 cause the entire network to require more resources to maintain, as well as
 potentially compromise the blockchain's overall security.
-
-
-
+\newpage
+\noindent
 So, if we were to show some pseudo-code for finding a valid kernel hash now,
-it would look like:
+it would look something like this:
 
 
 
@@ -169,28 +168,18 @@ it would look like:
 \vspace{5mm} %5mm vertical space
 
 
-
+\noindent
 This code isn't so easy to understand as our PoW example, so I'll attempt to
-explain it in plain English:
+explain it in plain English. Do the following over and over for infinity:
 
+\vspace{5mm} %5mm vertical space
 
+\lstinputlisting{snippets/pseudoexplain.txt}
 
-Do the following over and over for infinity:
-Calculate the blockTime to be the current time minus itself modulus 16
-(modulus is like dividing by 16, but then only instead of taking the
-result, taking the remainder)
-Calculate the posDifficulty as the network difficulty, multiplied by the
-number of coins held by the UTXO.
-Cycle through each UTXO in the wallet. With each UTXO, calculate a SHA256
-hash using the previous block's stake modifier, as well as some data from
-the the UTXO, and finally the blockTime. Compare this hash to the
-posDifficulty. If the hash is less than the posDifficulty, then the kernel
-hash is valid and you can create a new block.
-After going through all UTXOs, if no hash produced is less than the
-posDifficulty, then wait 16 seconds and do it all over again.
+\vspace{5mm} %5mm vertical space
 
-
-
+\newpage
+\noindent
 Now that we have found a valid kernel hash using one of the UTXOs we can
 spend, we can create a staking transaction. This staking transaction will
 have 1 VIN, which spends the UTXO we found that has a valid kernel hash.
@@ -201,9 +190,9 @@ public key, or it will contain a pay-to-pubkey script. The latter is usually
 used for simplicity but using a data transaction for this allows for some
 advanced use cases (such as a separate block signing machine) without
 needlessly cluttering the UTXO set.
-
-
-
+\\
+\\
+\noindent
 Finally, any transactions from the mempool are added to the block. The only
 thing left to do now is to create a signature, proving that we have approved
 the otherwise valid PoS block. The signature must use the public key that is
@@ -213,9 +202,9 @@ hash. After the signature is applied, the block can be broadcast to the
 network. Nodes in the network will then validate the block and if it finds
 it valid and there is no better blockchain then it will accept it into its
 own blockchain and broadcast the block to all the nodes it has connection to.
-
-
-
+\\
+\\
+\noindent
 It is highly recommended that you read the blog post by
 ‘\textit{Earlz}’\footnote{http://earlz.net/view/2017/07/27/1904/the-missing-explanation-of-proof-of-stake-version}
 and also the associated white papers for

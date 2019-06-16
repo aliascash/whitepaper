@@ -1,0 +1,22 @@
+Calculate the blockTime =
+'current time' - 'itself' (mod 16)
+(modulus is like dividing by 16, but taking the remainder)
+
+Calculate the posDifficulty =
+the 'network difficulty' * 'number of coins held in a UTXO'
+
+Cycle through for each UTXO in the wallet.
+
+With each UTXO calculate a SHA256 hash using:
+'previous block's stake modifier'
+'some data from the the UTXO' + 'the blockTime'
+
+Compare this hash to the posDifficulty.
+
+If hash is less than posDifficulty, then 'kernel hash' is valid
+
+You can then create a new block.
+
+After going through all UTXOs, if no valid 'kernel hash'
+
+Then wait 16 seconds and do it all over again.
