@@ -42,14 +42,15 @@ standard staking transaction\footnote{https://chainz.cryptoid.info/xspec/block.d
 
 
 
-\begin{figure}[ht]
-	\caption{Example of a staking transaction from the Spectrecoin block explorer}
-	\centering
-	\includegraphics[width=\textwidth]{ExampleStakingTransaction.png}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{Images/txnexample.png}
+    \caption{Example of a staking transaction}
+    \label{fig}
 \end{figure}
 
 
-
+\noindent
 As with any typical PoS cryptocurrency the staking transactions suffer
 from all the privacy issues of a standard UTXO transaction, and these
 transactions are potentially traceable and linkable on the blockchain.
@@ -77,6 +78,12 @@ decentralised and do not depend on any central servers or authority and is
 100\% peer-to-peer and there is no trusted setup. This provides very strong
 network resilience with no single point of failure.
 
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{WalletUI-3x.png}
+	\caption{New updated UI for the Spectrecoin wallet in v3.x}
+\end{figure}
+
 
 
 \subsection{Benefits of Anonymous Staking}
@@ -89,9 +96,8 @@ XSPEC all your \textit{XSPEC $<>$ XSPEC} transactions are again potentially
 traceable. Note that the potential traceability only becomes an issue
 \underline{after} the conversion from SPECTRE $>>$ XSPEC and does not affect
 the previous SPECTRE transaction.
-
-
-
+\newpage
+\noindent
 With the addition of anonymous staking to Spectrecoin and the updated UI it
 is now easy to distinguish between the different transactions and you will
 clearly see if you are staking XSPEC, SPECTRE or both. The previously
@@ -99,17 +105,9 @@ described ‘\textit{Development Contribution Blocks}’ (marked as ‘contribut
 will still occur every 1 in 6 blocks regardless of whether the block has
 been staked via the standard staking transaction or the anonymous ATXO
 staking transaction.
-
-
-
-\begin{figure}[ht]
-	\caption{New updated UI for the Spectrecoin wallet in v3.x}
-	\centering
-	\includegraphics[width=\textwidth]{WalletUI-3x.png}
-\end{figure}
-
-
-
+\\
+\\
+\noindent
 In addition to the pre-programmed 1/6 ‘\textit{Development Contribution Blocks}’,
 you can still choose to donate extra via the ‘\textit{Options}’ menu in the wallet.
 
@@ -125,9 +123,9 @@ and difficulty. An ATXO is an '\textit{Anonymous Transaction Output}' and
 associated with a discreet SPECTRE value. SPECTRE takes on discreet values,
 like 100, 50, 40, 10, 1, 0.5 and so on. Each ATXO has a unique
 cryptographically determined '\textit{keyimage}' associated with it.
-
-
-
+\\
+\\
+\noindent
 This '\textit{keyimage}' can be used to prevent double spend and once an
 ATXO is spent the '\textit{keyimage}' is stored on the blockchain. The ATXO
 is totally dissociated from any user and as each and every ATXO is a unique
@@ -135,9 +133,9 @@ is totally dissociated from any user and as each and every ATXO is a unique
 holds the '\textit{secret}' key needed to prove ownership and no information
 is written to the block-chain that can in any way identify the owner of an
 ATXO.
-
-
-
+\\
+\\
+\noindent
 In order to spend an ATXO or to use an ATXO in the staking transaction a user
 need to provide a valid ring-signature with a ring size of 10. The staking
 transaction therefore uses an ATXO as an input with 9 additional mixins for
@@ -148,10 +146,10 @@ reward in discreet units.
 
 \subsubsection{ATXO staking logic}
 Below is a summary of the logic for ATXO based staking w/ ring signatures.
-
-
-
-An ATXO staking transaction is valid, if:
+\\
+\\
+\noindent
+\underline{An ATXO staking transaction is valid, if:}
 \begin{itemize}
 	\item The transaction is PoSv3 compliant
 	\item VIN[0] has a valid ring-signature of MIN\_RING\_SIZE 10 (must has ring size 10)
@@ -159,6 +157,7 @@ An ATXO staking transaction is valid, if:
 	\item All ring-signature ATXOs meets minDepth maturity requirement
 	\item The kernel hash calculated is below target
 \end{itemize}
+\newpage
 
 
 
@@ -171,14 +170,13 @@ The coinstake kernel (input 0) must meet hash target according to the formula:
 $ hash(nStakeModifier + keyImage + nTime) < bnTarget * nWeight  $
 \vspace{5mm} %5mm vertical space
 
-
-
+\noindent
 This ensures that the chance of getting a coinstake is proportional to
 the amount of coins one owns.
-
-
-
-The reason this hash is chosen is the following:
+\\
+\\
+\noindent
+\underline{The reason this hash is chosen is the following:}
 \begin{itemize}
 	\item nStakeModifier: scrambles computation to make it very difficult
 	to precompute future proof-of-stake.
@@ -199,30 +197,29 @@ least amount of unspent in the range of  $>= BASE\_FEE * 10$ and $<$ staked
 ATXO value. If a denomination in this range is found with less than 100
 unspent ATXOs, the staked ATXO will be split to create one ATXO of the
 "\textit{low running}" denomination.
-
-
-
+\\
+\\
+\noindent
 Please see the examples below taken from the Spectrecoin Block explorer:
 
-
-
 \begin{figure}[ht]
+	
+	\centering
+	\includegraphics[width=\textwidth]{SPECTRE-StakeExample01.png}
 	\caption{1000 SPECTRE is staked, 3 SPECTRE is staking reward for the 
 	block, 0.001 SPECTRE is the lowest running and hence 3 SPECTRE gets 
 	split into $0.001 + 0.004 + 0.005 + 0.04 + 0.05 + 0.4 + 0.5 + 1 + 1 = 3$ SPECTRE}
-	\centering
-	\includegraphics[width=\textwidth]{SPECTRE-StakeExample01.png}
 	\footnote{https://chainz.cryptoid.info/xspec/block.dws?1169499.htm}
 \end{figure}
 
 
 
 \begin{figure}[ht]
+	\centering
+	\includegraphics[width=\textwidth]{SPECTRE-StakeExample02.png}
 	\caption{A further example of where 1000 SPECTRE is staked, 3 SPECTRE 
 	is the staking reward for the block, 100 SPECTRE is the lowest running 
 	and hence 1000 SPECTRE gets split into $100 + 400 + 500 = 1000$ SPECTRE}
-	\centering
-	\includegraphics[width=\textwidth]{SPECTRE-StakeExample02.png}
 	\footnote{https://chainz.cryptoid.info/xspec/block.dws?1168976.htm}
 \end{figure}
 
@@ -234,9 +231,9 @@ SPECTRE transactions there will be constant creation of small value ATXOs
 from staking rewards and transaction change. This will tend to result in
 larger transaction sizes in subsequent transactions as the number of
 smaller value ATXOs are combined for the desired output amount.
-
-
-
+\\
+\\
+\noindent
 To solve this problem an extra ATXO ‘\textit{consolidation algorithm}’
 has been implemented as part of the ATXO staking transaction where same
 value ATXOs are consolidated into larger value ATXOs. After a valid
@@ -251,7 +248,7 @@ illustration.
 
 
 
-   \begin{table}
+   \begin{table}[h]
 	\centering
 	\begin{tabular}{lllll}
 		\textbf{Multiple} &     & \textbf{ATXO value} &      & \textbf{Consolidated ATXO value} \\
@@ -265,7 +262,7 @@ illustration.
 	% Link to this label with \ref{tbl:consolidationExamples}
 \end{table}
 
-
+\noindent
 The new consolidation algorithm ensures that at least 200 unspent
 ‘\textit{mixins}’ of any denomination remains. This means that if less
 than 200 unspent ATXOs of a certain denomination exists, there is no
@@ -279,25 +276,26 @@ consolidated or not can all act as ‘\textit{mixins}’ in all future
 transactions, and an observer can NEVER establish if the ATXO value has
 been spent. Consequently, what we call the ‘\textit{Transactional Entropy}’
 increases by the block with minimal blockchain bloat.
+\newpage
 
 
-
+\noindent
 Please see the examples below taken from the Spectrecoin Block explorer:
 
 
 
 \begin{figure}[ht]
-	\caption{In this example you can see $10 * 30$ SPECTRE being consolidated 
-	into $1 * 30$ SPECTRE}
 	\centering
 	\includegraphics[width=\textwidth]{SPECTRE-ConsolidationExample01.png}
+	\caption{In this example you can see $10 * 30$ SPECTRE being consolidated 
+	into $1 * 30$ SPECTRE}
 	\footnote{https://chainz.cryptoid.info/xspec/block.dws?1190841.htm}
 \end{figure}
 \begin{figure}[ht]
-	\caption{In this example you can see $10 * 30$ SPECTRE being consolidated 
-	into $1 * 30$ SPECTRE}
 	\centering
 	\includegraphics[width=\textwidth]{SPECTRE-ConsolidationExample02.png}
+	\caption{In this example you can see $10 * 30$ SPECTRE being consolidated 
+	into $1 * 30$ SPECTRE}
 	\footnote{https://chainz.cryptoid.info/xspec/block.dws?1190898.htm}
 \end{figure}
 
