@@ -362,13 +362,13 @@ and \textbf{(2)} Nine (9) ‘\textit{mixins}’ of the same denomination
 value as the one being spent provides ‘\textit{plausible deniability}’ with
 regards to the sender. The sender could own any one of the ten ATXOs used
 in the ring-signature and an observer can not determine which one of the
-10 ATXOs forming the ring-signature is being spent. This is at core of
+10 ATXOs forming the ring-signature is being spent. This is at the core of
 ring-signature privacy and needs to be preserved.
 \\
 \\
 \noindent
 ATXOs of each denomination are “\textit{scattered}” along the Spectrecoin
-blockchain and exists in various blocks where they were once created and
+blockchain and exist in various blocks where they were once created and
 they can all be used as ‘\textit{mixins}’ in a ring-signature whether they
 have ever been spent or not. Each ATXO is a ‘\textit{unique unit of data}’
 identified by its associated ‘\textit{public key}’. However, only the
@@ -446,13 +446,13 @@ there is always a sufficient supply of ATXOs of varying denominations.
 We have therefore introduced an advanced ATXO balancer algorithm. This
 algorithm will measure the number of ATXO existing for each denomination
 and either seek to consolidate ATXO values or split ATXO values as part
-of the staking transaction in PoAS. This will ensure that there are
-always sufficient supply of ATXO to act as ‘\textit{mixins}‘.
+of the staking transaction in PoAS. This will ensure that there is
+always a sufficient supply of ATXO to act as ‘\textit{mixins}‘.
 \\
 \\
 \noindent
 In addition a new algorithm has been implemented to detect an
-‘\textit{ALL\_SPENT}‘ situation and if this situation does occurs
+‘\textit{ALL\_SPENT}‘ situation and if this situation occurs
 the network will ‘\textit{remember}‘ the block height (\textit{block number})
 and the picking algorithm will no longer pick ‘\textit{mixins}‘
 from below that block height. This ensures that users get the full
