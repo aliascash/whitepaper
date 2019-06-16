@@ -27,7 +27,26 @@
 \usepackage{titling}
 % make titling elements \sffamily
 
+\title{White Paper}
+\author{Eirik Korsell, Philip Mueller, Yves Schumann}
+\date{\today \\
+	Spectrecoin version 3.0.10}
+
 \begin{document}
+
+\begin{titlingpage} %This starts the title page
+\begin{center}
+\includegraphics[height=2cm]{Images/Headline.png}\\ %title logo
+\vspace{4cm} %vertical distance
+\begin{huge} 
+\textbf{\thetitle} \\
+\end{huge}
+\theauthor\\
+\vspace{7cm} %Put the distance you need.
+\thedate
+\end{center}
+\end{titlingpage}
+
 \sffamily
 
 \include{./TeX_files/title}
