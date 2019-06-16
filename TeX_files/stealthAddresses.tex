@@ -5,9 +5,9 @@ standard UTXO transactions might be de-anonymised and why stealth technology
 came to be used to counter this issue. It will also become apparent why
 stealth address technology in itself is not sufficient to provide reasonable
 privacy.
-
-
-
+\\
+\\
+\noindent
 The Spectrecoin blockchain is based on the design from Bitcoin Core 
 (\textit{except the consensus mechanisms}) and in both systems there are 
 $1.46 \ast 10^{48}$ possible receiving addresses. This is an extremely 
@@ -15,24 +15,24 @@ large number and it would give every person on Earth $2.05 \ast 10^{38}$
 different receiving addresses to use. The fact that it is possible
 to re-use an address more than once can be considerd a fluke and is not by
 design.
-
-
-
+\\
+\\
+\noindent
 First, let’s have a quick look at how a UTXO blockchain might be deanonymized.
 The three major factors that can reduce privacy for the user and are exploitable
 through transaction graph analysis are \textit{address re-use, change addresses 
 and the merging of outputs}.
-
-
-
+\\
+\\
+\noindent
 Address re-use is treating XSPEC addresses like a bank account where a single
 address is used for multiple transactions. XSPEC addresses are not designed to
 be used in this way. There are in fact no restrictions on the number of XSPEC
 addresses one person can use and for each transaction a new XSPEC address should
 be created.
-
-
-
+\\
+\\
+\noindent
 When addresses are re-used, all other transactions performed by that address
 can be seen by examining the blockchain. If you are aware of a transaction
 made by a person of interest and that transaction comes from the same address
@@ -40,9 +40,9 @@ by which this person receives all their payments, then their balances can
 easily be determined. You will also be able to look back at the history of
 that address, following the chains of transactions, to ascertain what other
 information can be extracted.
-
-
-
+\\
+\\
+\noindent
 Address re-use also weakens the security of the coins stored in those addresses.
 Transaction signing requires 256 bytes of random data (r-value) so that the
 private key cannot be reverse engineered. If the \textit{r-value} is not truly random
@@ -50,24 +50,23 @@ then the private key can be determined, which can be used to sign other
 transactions for that particular address. This attack can be negated by
 not re-using addresses, as once a transaction is signed from an address,
 it remains empty.
-
-
-
+\\
+\\
+\noindent
 Furthermore, each input in a standard transaction must be a full UTXO
 from a previous transaction as UTXO’s cannot be partially spent. This
 means that if you spend / send less than a full UTXO you will generate
 an output that is your change address. Therefore, an attacker examining
 the blockchain may generally assume that one output in any transaction
 belongs to the creator of the transaction.
-
-
-
+\\
+\\
+\noindent
 Also, if a transaction is generated where two or more UTXOs are pooled
 together to create the total input required an assumption can be made
 that the addresses merged together belongs to the same person.
-
-
-
+\newpage
+\noindent
 Let’s then introduce \textbf{\textit{Stealth Address techniques}} which 
 allow public keys appearing in the blockchain to be fully disconnected 
 from “\textit{stealth}” public keys which can be publicised by a 
@@ -84,38 +83,34 @@ the privacy of the recipient.} The first stealth address technique was
 invented by a user known as ‘\textit{bytecoin}’ in 2011 in the Bitcointalk 
 forum. Later improvements to stealth tech were proposed by van Saberhagen 
 in 2013/14 and by Peter Todd in 2014.
-
-
-
+\\
+\\
+\noindent
 The original stealth technology had various problems and on 02/08/2014 one
 of the ShadowCash developers known as ‘\textit{rynomster}’ announced a 
 first fully working implementation of stealth address technology known as 
 “\textit{dual-key stealth addresses}” that solved some of the issues in 
 previous proposals. A “\textit{dual-key stealth address}” has two public 
 keys and solves certain problems associated with previous schemes. For a 
-full and in-depth explanation of stealth addresses see the paper cited above.
-
-
-
+full and in-depth explanation of stealth addresses see the paper cited below.
+\\
+\\
+\noindent
 (\textit{Courtois N. and Mercer R. (2017). Stealth Address and Key Management
 Techniques in Blockchain Systems. In Proceedings of the 3rd International
 Conference on Information Systems Security and Privacy ISBN 978-989-
 758-209-7, pages 559-566. DOI: 10.5220/0006270005590566})
-
-
-
+\\
+\\
+\noindent
 The use of dual-key stealth addresses provide privacy for the receiver of
-funds and introduces various forms of un-linkability: 
-
-
+funds and introduces various forms of un-linkability:
 
 \begin{enumerate}
 	\item It is hard to	link different public keys/addresses of the same user,
 	\item It is hard to	link different transactions of the same user,
 	\item It is hard to link the sender to the recipient.
 \end{enumerate}
-
-
 
 \subsection{Limitations of Stealth Addresses}
 As mentioned above, stealth addresses generate a new standard address for
@@ -129,8 +124,7 @@ the blockchain to see if the user ever joins those UTXOs together or with
 others, in order to make an input to a higher value transaction in the future.
 Blockchain analysis can easily link this. \textbf{This is the reason why any
 cryptocurrency that rely on stealth addresses ONLY is not private.}
-
-
+\newpage
 
 \subsection{Anonymous Spectrecoin Conversion}
 Dual-key Stealth technology is used in the process to create anonymous 
@@ -158,18 +152,14 @@ includes the users private key associated with the ATXO being ‘\textit{spent}�
 Hence, if the user tries to spend the same ATXO again the same ‘\textit{keyimage}’
 will be generated and the system will reject the transaction as that
 ‘\textit{keyimage}’ has been seen before.
-
-
-
-\begin{lstlisting}
+\\
+\\
 The following SPECTRE denominations are possible:
-1000, 500, 400, 300, 100, 50, 50, 30, 10,
-5, 4, 3, 1, 0.5, 0.4, 0.3, 0.1, 0.0(000000)5,
-0.0(000000)4, 0.0(000000)3, 0.0(000000)1
-\end{lstlisting}
-
-
-
+\\
+$1000, 500, 400, 300, 100, 50, 50, 30, 10, 5, 4, 3, 1, \\0.5, 0.4, 0.3, 0.1, 0.0(000000)5, 0.0(000000)4, 0.0(000000)3, 0.0(000000)1$
+\\
+\\
+\noindent
 We have seen how the use of stealth address tech can be used to solve the
 problem of address re-use and to create un-linkable transactions. Now, we
 still have the problem of UTXOs being linked together in future transactions.
