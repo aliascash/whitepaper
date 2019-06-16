@@ -6,18 +6,18 @@ performed by any member of a defined group of users that each have the required
 keys. A distinctive \textbf{ring signature} is produced through a process that combines
 the keys of all possible signers and other values and which are then subject to
 a hash function.
-
-
-
+\\
+\\
+\noindent
 In cryptography a ring signature is a form of a \textit{non-interactive 
 zero knowledge proof}\footnote{https://en.wikipedia.org/wiki/Non-interactive\_zero-knowledge\_proof}. 
 In layman’s terms, what this means is simply that you can prove the
 correctness of a statement/transaction to a verifier without leaking any additional
 information by just using a shared common reference string (\textit{public key}).
 This system must include cryptographic completeness, soundness and zero-knowledge.
-
-
-
+\\
+\\
+\noindent
 \underline{Completeness} means that if the statement is correct, then the verifier will
 always accept. \underline{Soundness} is a property of such a system that requires that
 no prover can make the verifier accept a false or incorrect statement. If the
@@ -25,9 +25,9 @@ statement is incorrect or false, then the verifier will always reject. The
 last part is \underline{zero knowledge}. It is not possible to gain any extra information
 from the proof itself for any malicious verifier except for the correctness of
 the statement.
-
-
-
+\\
+\\
+\noindent
 This offers a group member a level of anonymity not attainable through generic
 digital signature schemes. This is a property known as ‘\textit{plausible deniability}’,
 or anonymity with respect to an anonymity set. With a ring size of 10 for example
@@ -36,9 +36,9 @@ determine which one corresponds to the \textbf{SPECTRE} spent in the transaction
 is only known to the sender. This protects the privacy of the sender. With every
 transaction using a ring-signature the network ‘\textit{transactional entropy}’ increases
 and it becomes increasingly hard to link input/output on the blockchain.
-
-
-
+\\
+\\
+\noindent
 Look at it like this; scattered along the Spectrecoin blockchain are ATXOs of
 various denominations from 1000 to 0.00000001 SPECTRE. These ATXOs may be spent
 or unspent but this cannot be determined by an observer. The proof of an ATXO
@@ -47,11 +47,12 @@ and there is nothing contained within the data of the ATXO itself or the
 transaction data written to the blockchain that signifies if it has ever been
 ‘\textit{spent}’. In a standard UTXO transaction on the other hand an observer can
 explicitly determine that an UTXO has indeed been spent to create a new UTXO.
-
-
-
+\\
+\\
+\noindent
 See the illustrations on the next page to visualise the difference between an
 UTXO and ATXO.
+\newpage
 
 
 
@@ -63,8 +64,7 @@ UTXO and ATXO.
 	\includegraphics[width=\textwidth]{Std-UTXO-Transaction.png}
 \end{figure}
 
-
-
+\noindent
 On the blockchain there is a \textbf{\underline{direct}} correlation
 between the inputs and the outputs, and all the transactions can be 
 traced back to the genesis transactions. This is still the case even 
@@ -77,16 +77,6 @@ non-anonymous and public, whether with Spectrecoin or Bitcoin.
 
 \subsection{Anonymous ATXO transaction}
 
-
-
-\begin{figure}[ht]
-	\caption{SPECTRE ATXO transaction}
-	\centering
-	\includegraphics[width=\textwidth]{Anonymous-ATXO-Transaction.png}
-\end{figure}
-
-
-
 In the Spectrecoin software we talk about ring sizes and this refers to the
 group or set of possible signers. So, in the example below, we have a ring
 size of 8 which simply means that amongst the 8 public keys that form part
@@ -94,9 +84,9 @@ of the digital signature, 7 are so called ‘\textit{mixins}’ or chaff or deco
 only 1 is the public key corresponding to the SPECTRE being spent. When
 conducting an anonymous transaction, we use ring signatures to hide spent
 output in a set of the same denomination.
-
-
-
+\\
+\\
+\noindent
 Anonymous transactions in Spectrecoin can be said to have levels of
 ‘\textit{transactional entropy}’ as there is an interface between the ‘\textit{public}’
 and the ‘\textit{anonymous}’ coins. Entropy level 0 can be said to be at the
@@ -107,6 +97,13 @@ created ATXO has no public UTXO origin. Once these ATXOs are used to
 create further ATXOs this would be entropy level 2 and so on. The entropy
 increases with every level, IF AND ONLY IF a minimum ring size is used and
 the ATXOs have not been part of any ring size 1 transaction.
+\newpage
+
+\begin{figure}[ht]
+	\caption{SPECTRE ATXO transaction}
+	\centering
+	\includegraphics[width=\textwidth]{Anonymous-ATXO-Transaction.png}
+\end{figure}
 
 
 
@@ -115,15 +112,15 @@ the ATXOs have not been part of any ring size 1 transaction.
 
 A minimum ring size of 10 is being enforced as part of the consensus since 
 Spectrecoin v3.x.
-
-
-
+\\
+\\
+\noindent
 Any ATXO used in a ring size 1 transaction will be marked as 
 ‘\textit{compromised}’ and will not be selected as a ‘\textit{mixin}’ 
 in any future ring signature transaction.
-
-
-
+\\
+\\
+\noindent
 \textbf{We have seen how dual-key stealth address techniques are used to 
 create ATXOs on the Spectrecoin blockchain with bundled one-time key pair 
 that can only be ‘spent’ by providing a valid ring signature. In this way 
@@ -138,10 +135,9 @@ CryptoNote white-paper\footnote{https://cryptonote.org/whitepaper.pdf}
 using maths based on the paper "\textit{1-out-of-n Signatures from a Variety of Keys}"\footnote{https://www.researchgate.net/publication/221326919\_1-out-of-n\_Signatures\_from\_a\_Variety\_of\_Keys} 
 by Abe, Ohkubo and Suzuki. He was able to create a linkable ring signature 
 which tends to be \sfrac{1}{2} of the size of the CryptoNote ring signature 
-as the signature is 3+n values vs. 2+2n values. 
-
-
-
+as the signature is 3+n values vs. 2+2n values.
+\newpage
+\noindent
 Dr. A. Back showed how to add traceability in a way that made it compatible with CryptoNote\footnote{https://bitcointalk.org/index.php?topic=972541.msg10619684}. 
 The original description contains 4 parts (\textbf{KEYGEN}, \textbf{SIG}, 
 \textbf{VERIFY}, \textbf{LINK}) and is summarized here for comparison:
@@ -249,8 +245,8 @@ The resulting signature $\sigma$ is then
 \sigma = (I, c_1, ..., c_n, r_1, ..., r_n)
 \]
 
-One can immediatly see that the signature $\sigma$ from the Cryptonote 
-whitepaper has $2(n+1)$ values for $c_i$ and $r_i$.
+One can immediately see that the signature $\sigma$ from the CryptoNote 
+white-paper has $2(n+1)$ values for $c_i$ and $r_i$.
 
 \hfill \break\textbf{VERIFY}: 
 The first step is to apply the inverse transformation.
@@ -347,6 +343,7 @@ Like above, we reject duplicate $I_j$ values.
 \hfill \break As we can see from the new signature $\sigma = 
 (m,I_j,c_1,s_1,...,s_n)$, this version of the ring signature 
 uses only 1/2 of the size of the Cryptonote ring signature.
+\newpage
 
 \subsection{The ‘All\_Spent’ Dilemma}
 A ‘\textit{special}‘ situation could occur where all the ATXOs available for a
@@ -355,9 +352,9 @@ We are referring to this situation as the \textbf{\textit{‘ALL\_SPENT’ dilem
 and although this appears to be a very low probability situation in V3 it could
 have dire consequences for privacy and compromise a number of ATXOs. Let’s first
 explain this dilemma in some detail:
-
-
-
+\\
+\\
+\noindent
 A valid ring signature (\textit{assume ring size 10}) needs: \textbf{(1)} An
 unspent ATXO of a certain denomination to be used/spent in the transaction,
 and \textbf{(2)} Nine (9) ‘\textit{mixins}’ of the same denomination
@@ -367,9 +364,9 @@ regards to the sender. The sender could own any one of the ten ATXOs used
 in the ring-signature and an observer can not determine which one of the
 10 ATXOs forming the ring-signature is being spent. This is at core of
 ring-signature privacy and needs to be preserved.
-
-
-
+\\
+\\
+\noindent
 ATXOs of each denomination are “\textit{scattered}” along the Spectrecoin
 blockchain and exists in various blocks where they were once created and
 they can all be used as ‘\textit{mixins}’ in a ring-signature whether they
@@ -377,16 +374,16 @@ have ever been spent or not. Each ATXO is a ‘\textit{unique unit of data}’
 identified by its associated ‘\textit{public key}’. However, only the
 owner of an ATXO can determine if an ATXO value has been spent or not
 as this requires the corresponding ‘\textit{private key}’.
-
-
-
+\\
+\\
+\noindent
 The ATXO picking algorithm for a ring-signature selects 9 ‘\textit{mixins}’
 at random from the available pool of ATXOs. In each block there could be a
 number of ATXOs of different denominations (\textit{spent or unspent})
 that could be selected as the 9 ‘\textit{mixins}’.
-
-
-
+\\
+\\
+\noindent
 Any observer will be able to establish the following: \textbf{(1)} In each
 valid ring-signature on the blockchain there will be one and only one ATXO
 of a certain denomination being spent. \textbf{(2)} In each valid
@@ -396,17 +393,16 @@ of existing ATXOs for each denomination by scanning the blockchain.
 \textbf{(4)} The observer will be able to count the number of ATXOs for
 each denomination that has been spent by counting the number of valid
 ring-signatures where this denomination has been used.
-
-
-
+\\
+\\
+\noindent
 As a result, if the ‘ALL\_SPENT‘ situation occurs, i.e.:
-
-
-
-\textbf{(number\_of\_\_existing\_ATXOs = number\_of\_spent\_ATXOs) }
-
-
-
+\\
+\noindent
+$(number\_of\_\_existing\_ATXOs = number\_of\_spent\_ATXOs)$
+\\
+\\
+\noindent
 An observer will be able to categorically determine that each of the ATXOs
 used as a ‘\textit{mixin}‘ in the ring-signature has previously been spent.
 The sender’s privacy has been compromised as the ‘\textit{real}‘ input ATXO
@@ -430,14 +426,21 @@ regarding this issue:
 
 \subsubsection{'ALL\_SPENT' illustration}
 
-...
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=\textwidth]{Images/allspentproblem.png}
+    \caption{ALL\_SPENT problem}
+    \label{fig:my_label}
+\end{figure}
 
 \subsubsection{Solutions}
 A range of measures are being implemented to negate the so called
 \textit{‘ALL\_SPENT’ dilemma}. We realised that this is only likely
 to occur in a situation where there is a very limited supply of
 ATXOs of a certain denomination.
-
+\\
+\\
+\noindent
 Therefore, the main approach to solve this problem is to make sure that
 there is always a sufficient supply of ATXOs of varying denominations.
 We have therefore introduced an advanced ATXO balancer algorithm. This
@@ -445,9 +448,9 @@ algorithm will measure the number of ATXO existing for each denomination
 and either seek to consolidate ATXO values or split ATXO values as part
 of the staking transaction in PoAS. This will ensure that there are
 always sufficient supply of ATXO to act as ‘\textit{mixins}‘.
-
-
-
+\\
+\\
+\noindent
 In addition a new algorithm has been implemented to detect an
 ‘\textit{ALL\_SPENT}‘ situation and if this situation does occurs
 the network will ‘\textit{remember}‘ the block height (\textit{block number})
@@ -467,7 +470,7 @@ per transaction because of the denomination system, because amounts
 have to be split into discrete values.
 
 
-
+\noindent
 The following dilemma may then occur; the ATXO picking algorithm (as it is
 now) could select ATXOs from an ‘\textit{ATXO\_SET}‘ as ‘\textit{mixins}‘
 in a ring-signature and this could potentially compromise privacy by making
@@ -481,9 +484,9 @@ New algorithms have been created to negate these issues and strengthen the
 privacy of the network. This way depending on the random pick of the initial
 ‘\textit{mixins}‘ and the denominations to fill, there will be a random
 amount of ‘\textit{mixins}‘ from the same transaction in the final transaction.
-
-
-
+\\
+\\
+\noindent
 This will also ensure that each output is only used once as a ‘\textit{mixin}‘
 in one of the ring-signatures (VINs). Something which was previously only
 assured by chance. Same ‘\textit{mixin}‘ in different VINs can only be fake.
@@ -503,8 +506,8 @@ assured by chance. Same ‘\textit{mixin}‘ in different VINs can only be fake.
 \end{itemize}
 
 
-
-We believe that these issues also exist in Monero and other CryptoNote based
+\noindent
+We believe that these issues also exist or existed in Monero and other CryptoNote based
 systems and may have been described first in a paper entitled
 \textit{“A Traceability Analysis of Monero’s Blockchain”}
 \footnote{https://eprint.iacr.org/2017/338.pdf} and in particular in
