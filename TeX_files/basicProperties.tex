@@ -1,4 +1,30 @@
-\section{Spectrecoin Specifications}
+\section{Spectrecoin Characteristics}
+The Spectrecoin software is encompassing and integrating the following:
+
+\begin{table}[h]
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{@{}ll@{}}
+\hline
+\textbf{Bitcoin Core} & Core technology of the Spectrecoin block-chain. \\ 
+\midrule
+\textbf{Proof-of-Stake.v3 (PoSv3)} & Secure open consensus mechanism for XSPEC public coins. \\ 
+\midrule
+\textbf{Proof-of-Anonymous-Stake (PoAS)} & Secure  private  consensus  mechanism  for  SPECTRE private coins. \\
+\midrule
+\textbf{Private transactions} & Using dual-key stealth technology and ring signatures for SPECTRE. \\
+\midrule
+\textbf{TOR} & to hide your real IP address (\textit{all Spectrecoin nodes run as hidden services}). \\
+\midrule
+\textbf{OBFS4} & To hide the fact that you are using TOR to avoid censorship. \\
+\hline
+\end{tabular}%
+}
+\end{table}
+\noindent
+Given the specific specifications and design, Spectrecoin takes on the characteristics of both a Bitcoin like blockchain and a Monero like blockchain. This combined with a pure PoS strategy makes Spectrecoin unique.
+\newpage
+
+\subsection{Spectrecoin Specifications}
 \begin{table}[h]
 \resizebox{\textwidth}{!}{%
 \begin{tabular}{@{}ll@{}}
@@ -27,9 +53,11 @@
 	\midrule
 	\textbf{Block reward (PoAS)} & 3 SPECTRE\\
 	\midrule
+	\textbf{Transaction fees} & Standard fees are the same for XSPEC and SPECTRE\\
+	\midrule
 	\textbf{Coin maturity (confirmations)} & 450 for stake reward / 10 for SPECTRE / 6 for XSPEC\\
 	\midrule
-	\textbf{Max supply} & No max supply (see illustrations on page 8)\\
+	\textbf{Max supply} & No max supply (see illustrations on page 11)\\
 	\midrule
 	\textbf{Inflation} & Decreasing over time tending to zero\\
 	\midrule
@@ -55,34 +83,8 @@ are created by PoSv3 and the maximum values represent a scenario where 100\%
 of the blocks are created by PoAS.
 \newpage
 
-
-\section{Spectrecoin Characteristics}
-The Spectrecoin software is encompassing and integrating the following:
-
-\begin{table}[h]
-\resizebox{\textwidth}{!}{%
-\begin{tabular}{@{}ll@{}}
-\hline
-\textbf{Bitcoin Core} & Core technology of the Spectrecoin block-chain. \\ 
-\midrule
-\textbf{Proof-of-Stake.v3 (PoSv3)} & Secure open consensus mechanism for XSPEC public coins. \\ 
-\midrule
-\textbf{Proof-of-Anonymous-Stake (PoAS)} & Secure  private  consensus  mechanism  for  SPECTRE private coins. \\
-\midrule
-\textbf{Private transactions} & Using dual-key stealth technology and ring signatures for SPECTRE. \\
-\midrule
-\textbf{TOR} & to hide your real IP address (\textit{all Spectrecoin nodes run as hidden services}). \\
-\midrule
-\textbf{OBFS4} & To hide the fact that you are using TOR to avoid censorship. \\
-\hline
-\end{tabular}%
-}
-\end{table}
-\noindent
-Given the specific specifications and design, Spectrecoin takes on the characteristics of both a Bitcoin like blockchain and a Monero like blockchain. This combined with a pure PoS strategy makes Spectrecoin unique.
-
 \subsection{Inflation rate over 20 years}
-\begin{figure}[h]
+\begin{figure}[h!]
 	\centering
 	\includegraphics[width=\textwidth]{inflation.png}
 	\caption{Min inflation rate after 20 years = 1.88\%, Max inflation 
@@ -90,7 +92,7 @@ Given the specific specifications and design, Spectrecoin takes on the character
 \end{figure}
 \noindent
 There are different strategies employed by different cryptocurrencies around 
-Inflation\footnote{\textit{Spectrecoin differs from Bitcoin and some other 
+Inflation. Spectrecoin differs from Bitcoin and some other 
 cryptocurrencies in that we have a constant coin generation scheme 
 but a relative inflation that tends to zero over time. There will 
 always be an incentive to stake Spectrecoin and the system will never 
@@ -103,7 +105,7 @@ online cash transfers. Economists discuss and debate this point but some
 level of inflation and value creation appears to be beneficial for long 
 term adoption and will prevent Spectrecoin from the potential dangers of 
 entering a ‘deflationary spiral’ relying on fees alone to sustain the 
-Spectrecoin ecosystem.}}. There doesn’t seem to be a consensus among 
+Spectrecoin ecosystem. There doesn’t seem to be a consensus among 
 scholars of what might be ‘\textit{the best}’ strategy.
 \newpage
 
@@ -122,10 +124,6 @@ to explore the Spectrecoin blockchain and you can see the total supply at any gi
 The maturity calculations have changed such that the minimum maturity for
 staking and for spending stakes has been increased from 288 to 450 blocks. That means that the new maturity time is approximately $96 seconds * 450 = 12 hours$ and hence the 8-hour maturity rule for staking has been removed. Also, note that the updated maturity rule is also considered for all ATXOs used in the ring signature
 of the staked VIN.
-
-\subsection{Reward and Fee Handling}
-The stake reward for a PoAS block is 3 SPECTRE and 2 XSPEC for a PoSv3 block.
-The fees are the same for both XSPEC and SPECTRE transactions.
 \newpage
 
 \subsection{Proof-of-Stake vs. Proof-of-Work}
@@ -145,17 +143,17 @@ The report calculated that the global Bitcoin mining industry draws 4.7GW of pow
 In comparison, Spectrecoin will run on a standard Raspberry Pi and in addition to all the privacy features, Spectrecoin is also truly eco-friendly, sustainable and ‘\textit{green technology}’. The estimated loose upper bound, \textbf{annual 
 consumption for a Raspberry Pi running Spectrecoin is 16.6kWh}.
 
-\vspace{5mm} %5mm vertical space
+\vspace{3mm} %5mm vertical space
 
 Bitcoin network:\\
 $41 TWh = 41*1012 Wh = 41,000,000,000,000 Wh$
 
-\vspace{5mm} %5mm vertical space
+\vspace{3mm} %5mm vertical space
 
 Spectrecoin node:\\
 $16.6 KWh = 16.6 * 103 Wh = 16,600 Wh * 1000 (nodes) = 16,600,000 Wh$
 
-\vspace{5mm} %5mm vertical space
+\vspace{3mm} %5mm vertical space
 
 \noindent
 That means that the whole \textit{Bitcoin network consumes almost \textbf{2.5 million times
