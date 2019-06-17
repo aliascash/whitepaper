@@ -13,6 +13,7 @@
 \usepackage{booktabs}
 \usepackage{graphicx}
 \usepackage{float}
+\usepackage{setspace}
 \pagenumbering{arabic}
 \graphicspath{ {./Images/} }
 \usepackage[a4paper, margin=2.5cm]{geometry}
@@ -32,8 +33,8 @@
 \date{\today \\
 	Spectrecoin version 3.0.10}
 	
-\setlength\parindent{0pt}
-\setlength{\parskip}{1em}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0em}
 
 \begin{document}
 
@@ -52,7 +53,9 @@
 
 \sffamily
 
-\tableofcontents
+\begin{spacing}{0}
+    \tableofcontents
+\end{spacing}
 
 \setlength{\arrayrulewidth}{.5mm}
 \setlength{\tabcolsep}{8pt}
