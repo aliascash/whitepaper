@@ -32,15 +32,15 @@ This offers a group member a level of anonymity not attainable through generic
 digital signature schemes. This is a property known as ‘\textit{plausible deniability}’,
 or anonymity with respect to an anonymity set. With a ring size of 10 for example
 there are 10 possible signatories, i.e. 10 public keys and an observer cannot
-determine which one corresponds to the \textbf{SPECTRE} spent in the transaction. This
+determine which one corresponds to the \textbf{ALIAS (private)} spent in the transaction. This
 is only known to the sender. This protects the privacy of the sender. With every
 transaction using a ring-signature the network ‘\textit{transactional entropy}’ increases
 and it becomes increasingly hard to link input/output on the blockchain.
 \\
 \\
 \noindent
-Look at it like this; scattered along the Spectrecoin blockchain are ATXOs of
-various denominations from 1000 to 0.00000001 SPECTRE. These ATXOs may be spent
+Look at it like this; scattered along the Alias blockchain are ATXOs of
+various denominations from 1000 to 0.00000001 ALIAS (private). These ATXOs may be spent
 or unspent but this cannot be determined by an observer. The proof of an ATXO
 being spent is formed on an ad-hoc basis through the creation of a ‘\textit{keyimage}’
 and there is nothing contained within the data of the ATXO itself or the
@@ -71,27 +71,27 @@ traced back to the genesis transactions. This is still the case even
 if a mixing strategy is used, such as in DASH. There are increasingly 
 sophisticated methods to analyse blockchain data and this is a growth 
 industry. You should consider any standard UTXO transactions to be 
-non-anonymous and public, whether with Spectrecoin or Bitcoin.
+non-anonymous and public, whether with Alias or Bitcoin.
 
 
 
 \subsection{Anonymous ATXO transaction}
 
-In the Spectrecoin software we talk about ring sizes and this refers to the
+In the Alias software we talk about ring sizes and this refers to the
 group or set of possible signers. So, in the example below, we have a ring
 size of 8 which simply means that amongst the 8 public keys that form part
 of the digital signature, 7 are so called ‘\textit{mixins}’ or chaff or decoys and
-only 1 is the public key corresponding to the SPECTRE being spent. When
+only 1 is the public key corresponding to the ALIAS (private) being spent. When
 conducting an anonymous transaction, we use ring signatures to hide spent
 output in a set of the same denomination.
 \\
 \\
 \noindent
-Anonymous transactions in Spectrecoin can be said to have levels of
+Anonymous transactions in Alias can be said to have levels of
 ‘\textit{transactional entropy}’ as there is an interface between the ‘\textit{public}’
 and the ‘\textit{anonymous}’ coins. Entropy level 0 can be said to be at the
-interface between XSPEC $>>$ SPECTRE and between SPECTRE $>>$ XSPEC. Once
-SPECTRE has been created from SPECTRE, i.e. an ATXO used as an input to
+interface between ALIAS (public) $>>$ ALIAS (private) and between ALIAS (private) $>>$ ALIAS (public). Once
+ALIAS (private) has been created from ALIAS (private), i.e. an ATXO used as an input to
 create a new ATXO we can say that this is entropy level 1 as the freshly
 created ATXO has no public UTXO origin. Once these ATXOs are used to
 create further ATXOs this would be entropy level 2 and so on. The entropy
@@ -102,7 +102,7 @@ the ATXOs have not been part of any ring size 1 transaction.
 \begin{figure}[ht]
 	\centering
 	\includegraphics[width=\textwidth]{Anonymous-ATXO-Transaction.png}
-	\caption{SPECTRE ATXO transaction}
+	\caption{ALIAS (private) ATXO transaction}
 \end{figure}
 
 
@@ -111,7 +111,7 @@ the ATXOs have not been part of any ring size 1 transaction.
 \subsection{Minimum Ring Size}
 
 A minimum ring size of 10 is being enforced as part of the consensus since 
-Spectrecoin v3.x.
+Alias v3.x.
 \\
 \\
 \noindent
@@ -122,14 +122,14 @@ in any future ring signature transaction.
 \\
 \noindent
 \textbf{We have seen how dual-key stealth address techniques are used to 
-create ATXOs on the Spectrecoin blockchain with bundled one-time key pair 
+create ATXOs on the Alias blockchain with bundled one-time key pair 
 that can only be ‘spent’ by providing a valid ring signature. In this way 
-Spectrecoin protects the privacy of both the sender and the receiver.}
+Alias protects the privacy of both the sender and the receiver.}
 
 
 
 \subsection{Ring-Signature formula}
-Spectrecoin uses a ring-signature formula developed by Dr. Adam Back. He 
+Alias uses a ring-signature formula developed by Dr. Adam Back. He 
 created a formula based on the traceable ring signature described in the 
 CryptoNote white-paper\footnote{https://cryptonote.org/whitepaper.pdf} 
 using maths based on the paper "\textit{1-out-of-n Signatures from a Variety of Keys}"\footnote{https://www.researchgate.net/publication/221326919\_1-out-of-n\_Signatures\_from\_a\_Variety\_of\_Keys} 
@@ -272,7 +272,7 @@ uses a set $\mathcal{I}$ of previous signatures and rejects the signature
 $\sigma = (I,... )$ if $I \in \mathcal{I}$.
 
 \hfill \break Dr. Adam Back's variation, and the version of the ring-signature 
-algorithm used by spectrecoin, is as follows:
+algorithm used by Alias, is as follows:
 
 \hfill \break\textbf{KEYGEN}: Like above, pick a random private key 
 $x \in [1..l-1]$ and calculate:
@@ -367,7 +367,7 @@ ring-signature privacy and needs to be preserved.
 \\
 \\
 \noindent
-ATXOs of each denomination are “\textit{scattered}” along the Spectrecoin
+ATXOs of each denomination are “\textit{scattered}” along the Alias
 blockchain and exist in various blocks where they were once created and
 they can all be used as ‘\textit{mixins}’ in a ring-signature whether they
 have ever been spent or not. Each ATXO is a ‘\textit{unique unit of data}’
@@ -446,7 +446,7 @@ there is always a sufficient supply of ATXOs of varying denominations.
 We have therefore introduced an advanced ATXO balancer algorithm. This
 algorithm will measure the number of ATXO existing for each denomination
 and either seek to consolidate ATXO values or split ATXO values as part
-of the staking transaction in PoAS. This will ensure that there is
+of the staking transaction in APoS. This will ensure that there is
 always a sufficient supply of ATXO to act as ‘\textit{mixins}‘.
 \\
 \\

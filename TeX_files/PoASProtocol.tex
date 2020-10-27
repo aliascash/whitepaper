@@ -1,9 +1,9 @@
-\section{The Proof-of-Anonymous-Stake (PoAS) Protocol}
+\section{The Anonymous-Proof-of-Stake (APoS) Protocol}
 This section introduces a new staking algorithm that was introduced to the
-Spectrecoin mainnet through the release of v3.0.9 and a hard-fork on
+ALIAS (private) mainnet through the release of v3.0.9 and a hard-fork on
 17\textsuperscript{th} May 2019. This is the first known implementation
 of a private staking protocol employing ring-signatures in the staking
-transactions. This protocol was designed and coded by Spectrecoin lead
+transactions. This protocol was designed and coded by ALIAS (private) lead
 developer Philip Mueller (\textit{@Tek}). The protocol is based on the
 PoSv3 protocol that we described in the previous section.
 
@@ -11,7 +11,7 @@ PoSv3 protocol that we described in the previous section.
 
 \subsection{Introduction}
 We consider that a privacy focused pure Proof-of-Stake (\textit{PoS})
-network such as Spectrecoin needs to be able to maintain consensus through
+network such as ALIAS (private) needs to be able to maintain consensus through
 a mechanism that maintains privacy, prevents easy blockchain analysis and
 is censorship resistant. Hence, such a network is not complete without a
 way to stake in private. There should be a way to maintain the privacy of
@@ -31,14 +31,14 @@ below a certain threshold that is determined by a separate calculation.
 The user (\textit{the wallet}) who is able to generate a valid
 '\textit{kernel hash}' will be granted the right to add the next block
 to the blockchain. The newly added block includes the generated stake
-reward (XSPEC) and any transactions currently in the memory pool + any
+reward (ALIAS (private)) and any transactions currently in the memory pool + any
 fees. The UTXO used to calculate the valid '\textit{kernel hash}' will
 be spent and the generated stake reward + the value of the spent UTXO
 will be included in a newly generated UTXO associated with the same public
 address. In this way every stake that has been generated as a result of
 UTXOs associated with a certain public address will forever be linked to
 that address and it's plain for all to see. Below is an example of a
-standard staking transaction\footnote{https://chainz.cryptoid.info/xspec/block.dws?1190944.htm}:
+standard staking transaction\footnote{https://chainz.cryptoid.info/ALIAS (private)/block.dws?1190944.htm}:
 
 
 
@@ -67,10 +67,10 @@ get with a standard PoS network.
 
 
 \subsection{The Solution}
-We have therefore developed what we call ‘\textbf{\textit{Proof-of-Anonymous-Stake}}’
-(PoAS) to solve this problem. This is a brand new and novel staking protocol
-utilising only SPECTRE and ring-signatures in the staking transactions and
-the rewards are also paid in SPECTRE. This offers a through-and-through
+We have therefore developed what we call ‘\textbf{\textit{Anonymous-Proof-of-Stake}}’
+(APoS) to solve this problem. This is a brand new and novel staking protocol
+utilising only ALIAS (private) and ring-signatures in the staking transactions and
+the rewards are also paid in ALIAS (private). This offers a through-and-through
 confidential way to maintain consensus and provide strong privacy for
 participants whilst securing the network. It is also appropriate to emphasise
 that this confidential and private consensus mechanism is totally
@@ -80,27 +80,27 @@ network resilience with no single point of failure.
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=\textwidth]{WalletUI-3x.png}
-	\caption{New updated UI for the Spectrecoin wallet in v3.x}
+	\includegraphics[width=\textwidth]{Images/wallet_alias_2.jpg}
+	\caption{New updated UI for the ALIAS (private) wallet in v4.x}
 \end{figure}
 
 
 
 \subsection{Benefits of Anonymous Staking}
 The benefits are straight forward and easy to appreciate; if you transfer
-your holdings to \textit{SPECTRE}, our anonymous coin, nobody will be able
+your holdings to \textit{ALIAS (private)}, our anonymous coin, nobody will be able
 to know your balance, nobody will know how much you stake and if you keep
-transactions \textit{SPECTRE $<>$ SPECTRE} you preserve your privacy at all
-times. It is useful however to remember that once SPECTRE is converted to
-XSPEC all your \textit{XSPEC $<>$ XSPEC} transactions are again potentially
+transactions \textit{ALIAS (private) $<>$ ALIAS (private)} you preserve your privacy at all
+times. It is useful however to remember that once ALIAS (private) is converted to
+ALIAS (private) all your \textit{ALIAS (private) $<>$ ALIAS (private)} transactions are again potentially
 traceable. Note that the potential traceability only becomes an issue
-\underline{after} the conversion from SPECTRE $>>$ XSPEC and does not affect
-the previous SPECTRE transaction.
+\underline{after} the conversion from ALIAS (private) $>>$ ALIAS (private) and does not affect
+the previous ALIAS (private) transaction.
 \newpage
 \noindent
-With the addition of anonymous staking to Spectrecoin and the updated UI it
+With the addition of anonymous staking to ALIAS (private) and the updated UI it
 is now easy to distinguish between the different transactions and you will
-clearly see if you are staking XSPEC, SPECTRE or both. The previously
+clearly see if you are staking ALIAS (private), ALIAS (private) or both. The previously
 described ‘\textit{Development Contribution Blocks}’ (marked as ‘contributed’)
 will still occur every 1 in 6 blocks regardless of whether the block has
 been staked via the standard staking transaction or the anonymous ATXO
@@ -113,14 +113,14 @@ you can still choose to donate extra via the ‘\textit{Options}’ menu in the 
 
 
 
-\subsection{PoAS Implementation Detail}
-In Spectrecoin's PoAS the basic structure of the staking transactions and
+\subsection{APoS Implementation Detail}
+In ALIAS (private)'s APoS the basic structure of the staking transactions and
 the rules remain mainly intact. But, instead of using the UTXO transaction
 hash as an input in the '\textit{kernel hash}' calculation and the
 difficulty calculations, the so called '\textit{keyimage}' associated with
 an ATXO is used instead as an input to calculate the '\textit{kernel hash}'
 and difficulty. An ATXO is an '\textit{Anonymous Transaction Output}' and
-associated with a discreet SPECTRE value. SPECTRE takes on discreet values,
+associated with a discreet ALIAS (private) value. ALIAS (private) takes on discreet values,
 like 100, 50, 40, 10, 1, 0.5 and so on. Each ATXO has a unique
 cryptographically determined '\textit{keyimage}' associated with it.
 \\
@@ -180,7 +180,7 @@ the amount of coins one owns.
 \begin{itemize}
 	\item nStakeModifier: scrambles computation to make it very difficult
 	to precompute future proof-of-stake.
-	\item nStakeModifier is either the UTXO hash (PoSv3) or keyImage (PoAS) 
+	\item nStakeModifier is either the UTXO hash (PoSv3) or keyImage (APoS) 
 	used for the last staking transaction plus the previous block's stake 
 	modifier.
 	\item keyImage: the keyImage of the ATXO used for staking is unique 
@@ -200,15 +200,15 @@ unspent ATXOs, the staked ATXO will be split to create one ATXO of the
 \\
 \\
 \noindent
-Please see the examples below taken from the Spectrecoin Block explorer:
+Please see the examples below taken from the ALIAS (private) Block explorer:
 
 \begin{figure}[ht]
 	
 	\centering
 	\includegraphics[width=\textwidth]{SPECTRE-StakeExample01.png}
-	\caption{1000 SPECTRE is staked, 3 SPECTRE is staking reward for the 
-	block, 0.001 SPECTRE is the lowest running and hence 3 SPECTRE gets 
-	split into $0.001 + 0.004 + 0.005 + 0.04 + 0.05 + 0.4 + 0.5 + 1 + 1 = 3$ SPECTRE}
+	\caption{1000 ALIAS (private) is staked, 3 ALIAS (private) is staking reward for the 
+	block, 0.001 ALIAS (private) is the lowest running and hence 3 ALIAS (private) gets 
+	split into $0.001 + 0.004 + 0.005 + 0.04 + 0.05 + 0.4 + 0.5 + 1 + 1 = 3$ ALIAS (private)}
 \end{figure}
 \newpage
 
@@ -217,16 +217,16 @@ Please see the examples below taken from the Spectrecoin Block explorer:
 \begin{figure}[ht]
 	\centering
 	\includegraphics[width=\textwidth]{SPECTRE-StakeExample02.png}
-	\caption{A further example of where 1000 SPECTRE is staked, 3 SPECTRE 
-	is the staking reward for the block, 100 SPECTRE is the lowest running 
-	and hence 1000 SPECTRE gets split into $100 + 400 + 500 = 1000$ SPECTRE}
+	\caption{A further example of where 1000 ALIAS (private) is staked, 3 ALIAS (private) 
+	is the staking reward for the block, 100 ALIAS (private) is the lowest running 
+	and hence 1000 ALIAS (private) gets split into $100 + 400 + 500 = 1000$ ALIAS (private)}
 \end{figure}
 
 
 
 \subsection{ATXO Consolidation}
-Through the ‘\textit{Stealth Staking}’ process and in any SPECTRE $<>$
-SPECTRE transactions there will be constant creation of small value ATXOs
+Through the ‘\textit{Stealth Staking}’ process and in any ALIAS (private) $<>$
+ALIAS (private) transactions there will be constant creation of small value ATXOs
 from staking rewards and transaction change. This will tend to result in
 larger transaction sizes in subsequent transactions as the number of
 smaller value ATXOs are combined for the desired output amount.
@@ -240,7 +240,7 @@ value ATXOs are consolidated into larger value ATXOs. After a valid
 as the first VIN to the transaction. The ‘\textit{consolidation algorithm}’
 then tries to consolidate up to 50 ATXOs. The ATXOs are iterated from the
 lowest to the highest amount with a maximum ATXO value to be consolidated
-of 100 SPECTRE (MAX\_STAKING\_OUTPUT / 10). Every time 10 ATXOs are found
+of 100 ALIAS (private) (MAX\_STAKING\_OUTPUT / 10). Every time 10 ATXOs are found
 with same value they are added as an additional input. A maximum of 50
 Inputs are added. In the below example we have chosen some values as an
 illustration.
@@ -279,21 +279,21 @@ increases by the block with minimal blockchain bloat.
 
 
 \noindent
-Please see the examples below taken from the Spectrecoin Block explorer:
+Please see the examples below taken from the ALIAS (private) Block explorer:
 
 
 
 \begin{figure}[ht]
 	\centering
 	\includegraphics[width=\textwidth]{SPECTRE-ConsolidationExample01.png}
-	\caption{In this example you can see $10 * 30$ SPECTRE being consolidated 
-	into $1 * 300$ SPECTRE}
+	\caption{In this example you can see $10 * 30$ ALIAS (private) being consolidated 
+	into $1 * 300$ ALIAS (private)}
 \end{figure}
 \begin{figure}[ht]
 	\centering
 	\includegraphics[width=\textwidth]{SPECTRE-ConsolidationExample02.png}
-	\caption{In this example you can see $10 * 3$ SPECTRE being consolidated 
-	into $1 * 30$ SPECTRE}
+	\caption{In this example you can see $10 * 3$ ALIAS (private) being consolidated 
+	into $1 * 30$ ALIAS (private)}
 \end{figure}
 
 

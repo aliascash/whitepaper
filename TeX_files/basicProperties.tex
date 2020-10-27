@@ -1,86 +1,86 @@
-\section{Spectrecoin Characteristics}
-The Spectrecoin software is encompassing and integrating the following:
+\section{Alias Characteristics}
+The Alias software is encompassing and integrating the following:
 
 \begin{table}[h]
 \resizebox{\textwidth}{!}{%
 \begin{tabular}{@{}ll@{}}
 \hline
-\textbf{Bitcoin Core} & Core technology of the Spectrecoin blockchain. \\ 
+\textbf{Bitcoin Core} & Core technology of the Alias blockchain. \\ 
 \midrule
-\textbf{Proof-of-Stake.v3 (PoSv3)} & Secure open consensus mechanism for XSPEC public coins. \\ 
+\textbf{Proof-of-Stake.v3 (PoSv3)} & Secure open consensus mechanism for ALIAS (public). \\ 
 \midrule
-\textbf{Proof-of-Anonymous-Stake (PoAS)} & Secure  private  consensus  mechanism  for  SPECTRE private coins. \\
+\textbf{Anonymous-Proof-of-Stake (APoS)} & Secure  private  consensus  mechanism  for  ALIAS (private). \\
 \midrule
-\textbf{Private transactions} & Using dual-key stealth technology and ring signatures for SPECTRE. \\
+\textbf{Private transactions} & Using dual-key stealth technology and ring signatures for ALIAS (private). \\
 \midrule
-\textbf{TOR} & to hide your real IP address (\textit{all Spectrecoin nodes run as hidden services}). \\
+\textbf{Tor Hidden Services v3} & to hide your real IP address (\textit{all Alias nodes run as hidden services}). \\
 \midrule
-\textbf{OBFS4} & To hide the fact that you are using TOR to avoid censorship. \\
+\textbf{OBFS4} & To hide the fact that you are using Tor to avoid censorship. \\
+\midrule
+\textbf{HD Wallets} & Hierarchical Deterministic wallets (BIP-0032 specifications). \\
 \hline
 \end{tabular}%
 }
 \end{table}
 \noindent
-Given the specific specifications and design, Spectrecoin takes on the characteristics of both a Bitcoin like blockchain and a Monero like blockchain. This combined with a pure PoS strategy makes Spectrecoin unique.
+Given the specific specifications and design, Alias takes on the characteristics of both a Bitcoin like blockchain and a Monero like blockchain. This combined with a pure PoS strategy makes Alias unique.
 \newpage
 
-\subsection{Spectrecoin Specifications}
+\subsection{Alias Specifications}
 \begin{table}[h]
 \resizebox{\textwidth}{!}{%
 \begin{tabular}{@{}ll@{}}
 	\hline
 	\textbf{Genesis block} & Block \#1 mined on 20/11/2016 (later transition to PoS only)\\
 	\midrule
-	\textbf{Distribution} & ICO that raised 16 BTC w/ subsequent distribution in early 2017\\
+	\textbf{Ticker} & ALIAS\\
 	\midrule
-	\textbf{Ticker} & XSPEC\\
+	\textbf{Initial supply} & 20,000,000 ALIAS\\
 	\midrule
-	\textbf{Initial supply} & 20,000,000 XSPEC\\
+    \textbf{Additional supply} & 3,000,000, ALIAS on 27/09/2019\\
+    \midrule
+	\textbf{Network outputs (public)} & ALIAS (public) – public coins\\
 	\midrule
-	\textbf{Network outputs (public)} & XSPEC – public coins\\
+	\textbf{Network outputs (private)} & ALIAS (private) – private coins\\
 	\midrule
-	\textbf{Network outputs (private)} & SPECTRE – private coins\\
+	\textbf{Consensus (ALIAS (public))} & Proof-of-Stake v.3 (PoSv3)\\
 	\midrule
-	\textbf{Consensus (XSPEC)} & Proof-of-Stake v.3 (PoSv3)\\
-	\midrule
-	\textbf{Consensus (SPECTRE)} & Proof-of-Anonymous-Stake (PoAS)\\
+	\textbf{Consensus (ALIAS (private))} & Anonymous-Proof-of-Stake (APoS)\\
 	\midrule
 	\textbf{Difficulty retarget} & Every block\\
 	\midrule
 	\textbf{Target block time} & 96 seconds\\
 	\midrule
-	\textbf{Block reward (PoSv3)} & 2 XSPEC\\
+	\textbf{Block reward (PoSv3)} & 2 ALIAS (public)\\
 	\midrule
-	\textbf{Block reward (PoAS)} & 3 SPECTRE\\
+	\textbf{Block reward (APoS)} & 3 ALIAS (private)\\
 	\midrule
-	\textbf{Transaction fees} & Standard fees are the same for XSPEC and SPECTRE\\
+	\textbf{Transaction fees} & Standard fees are the same for ALIAS (public) and ALIAS (private)\\
 	\midrule
-	\textbf{Coin maturity (confirmations)} & 450 for stake reward / 10 for SPECTRE / 6 for XSPEC\\
+	\textbf{Coin maturity (confirmations)} & 450 for stake reward / 10 for ALIAS (private) / 6 for ALIAS (public)\\
 	\midrule
 	\textbf{Max supply} & No max supply (see illustrations on page 10)\\
 	\midrule
 	\textbf{Inflation} & Decreasing over time tending to zero\\
 	\midrule
-	\textbf{Code repository} & https://github.com/spectrecoin/spectre\\
+	\textbf{Code repository} & https://github.com/GetAlias/ALIAS\\
 	\midrule
 	\textbf{Supported platforms} / OS & MS Windows, OSX, Linux, Raspberry Pi\\
 	\midrule
-	\textbf{Website} & https://spectreproject.io/\\
+	\textbf{Website} & https://alias.cash/\\
 	\midrule
-	\textbf{Block explorer} & https://chainz.cryptoid.info/xspec/\\
+	\textbf{Block explorer} & https://chainz.cryptoid.info/ALIAS/\\
 	\hline
 \end{tabular}%
 }
 \end{table}
 \noindent
 It is important to understand that the total ‘\textit{outstanding}’ amount is the sum
-of \linebreak XSPEC + SPECTRE. On the next page we have projected both a minimum and a
-maximum inflation rate and total ‘\textit{outstanding}’ amount of XSPEC + SPECTRE over
+of \linebreak ALIAS (public) + ALIAS (private). On the next page we have projected both a minimum and a
+maximum inflation rate and total ‘\textit{outstanding}’ amount of ALIAS (public) + ALIAS (private) over
 20 years. The real value of the total ‘\textit{outstanding}’ amount will depend on the
-ratio of XSPEC / SPECTRE created by the two different consensus mechanisms
-over time. The minimum values represent a scenario where 100\% of the blocks
-are created by PoSv3 and the maximum values represent a scenario where 100\%
-of the blocks are created by PoAS.
+ratio of ALIAS (public) / ALIAS (private) created by the two different consensus mechanisms
+over time.
 \newpage
 
 \subsection{Inflation rate over 20 years}
@@ -91,21 +91,28 @@ of the blocks are created by PoAS.
 	rate after 20 years = 2.40\% }
 \end{figure}
 \noindent
-There are different strategies employed by different cryptocurrencies around 
-Inflation. Spectrecoin differs from Bitcoin and some other 
+The minimum values represent a scenario where 100\% of the blocks
+are created by PoSv3.
+\linebreak
+The maximum values represent a scenario where 100\%
+of the blocks are created by APoS.
+\\
+\\
+There are different strategies employed by different cryptocurrencies around
+Inflation. Alias differs from Bitcoin and some other 
 cryptocurrencies in that we have a constant coin generation scheme 
 but a relative inflation that tends to zero over time. There will 
-always be an incentive to stake Spectrecoin and the system will never 
+always be an incentive to stake Alias and the system will never 
 rely on fees alone to provide this incentive. It is beyond the scope 
 of this paper to have an in-depth discussion about inflation and money 
-supply and the nature of money and currencies. Spectrecoin can be seen 
-as a ‘medium of exchange’ and the aim is that Spectrecoin will be used 
+supply and the nature of money and currencies. Alias can be seen 
+as a ‘medium of exchange’ and the aim is that Alias will be used 
 to buy/sell goods and other fiat currency in its intended use in future 
 online cash transfers. Economists discuss and debate this point but some 
 level of inflation and value creation appears to be beneficial for long 
-term adoption and will prevent Spectrecoin from the potential dangers of 
+term adoption and will prevent Alias from the potential dangers of 
 entering a ‘deflationary spiral’ relying on fees alone to sustain the 
-Spectrecoin ecosystem. There doesn’t seem to be a consensus among 
+Alias ecosystem. There doesn’t seem to be a consensus among 
 scholars of what might be ‘\textit{the best}’ strategy.
 \newpage
 
@@ -113,12 +120,12 @@ scholars of what might be ‘\textit{the best}’ strategy.
 \begin{figure}[ht]
 	\centering
 	\includegraphics[width=\textwidth]{supply.png}
-	\caption{Min supply after 20 years = 34,883,000 XSPEC+SPECTRE - Max 
-		supply after 20 years = 41,124,500 XSPEC+SPECTRE}
+	\caption{Min supply after 20 years = 34,883,000 ALIAS (public)+ALIAS (private) - Max 
+		supply after 20 years = 41,124,500 ALIAS (public)+ALIAS (private)}
 \end{figure}
 \noindent
-The block explorer\footnote{https://chainz.cryptoid.info/xspec/} allows you 
-to explore the Spectrecoin blockchain and you can see the total supply at any given time.
+The block explorer\footnote{https://chainz.cryptoid.info/ALIAS/} allows you 
+to explore the Alias blockchain and you can see the total supply at any given time.
 
 \subsection{Maturity}
 The maturity calculations have changed such that the minimum maturity for
@@ -127,7 +134,7 @@ of the staked VIN.
 \newpage
 
 \subsection{Proof-of-Stake vs. Proof-of-Work}
-Spectrecoin uses both PoSv3 and PoAS algorithms to keep the network consensus and to secure and confirm transactions. Both PoSv3 and PoAS appear to be more resilient against various attacks that could be instigated against a Proof-of-Work (PoW) system like Bitcoin, Litecoin and DASH for example. It is also known that PoW systems are susceptible to so called 51\% attacks where a sufficiently funded and motivated attacker can “\textit{take control}” over the network and generate double spend transactions\footnote{https://www.crypto51.app/}. It is more difficult to attack a PoS system in this way as it would be unfeasible to acquire the majority of Spectrecoin in circulation and doing so would undermine the value and remove the incentive for the attack in the first place. There are obviously other attack vectors, such as the recently discovered so called “\textit{Fake Stake}” attack against PoSv3\footnote{https://medium.com/@dsl\_uiuc/fake-stake-attacks-on-chain-based-proof-of-stake-cryptocurrenciesb8b05723f806}. This has since been fixed by the Spectrecoin developers and Spectrecoin is no longer susceptible to such an attack.
+Alias uses both PoSv3 and APoS algorithms to keep the network consensus and to secure and confirm transactions. Both PoSv3 and APoS appear to be more resilient against various attacks that could be instigated against a Proof-of-Work (PoW) system like Bitcoin, Litecoin and DASH for example. It is also known that PoW systems are susceptible to so called 51\% attacks where a sufficiently funded and motivated attacker can “\textit{take control}” over the network and generate double spend transactions\footnote{https://www.crypto51.app/}. It is more difficult to attack a PoS system in this way as it would be unfeasible to acquire the majority of Alias in circulation and doing so would undermine the value and remove the incentive for the attack in the first place. There are obviously other attack vectors, such as the recently discovered so called “\textit{Fake Stake}” attack against PoSv3\footnote{https://medium.com/@dsl\_uiuc/fake-stake-attacks-on-chain-based-proof-of-stake-cryptocurrenciesb8b05723f806}. This has since been fixed by the Alias developers and Alias is no longer susceptible to such an attack.
 \\
 \\
 \noindent
@@ -140,8 +147,8 @@ The report calculated that the global Bitcoin mining industry draws 4.7GW of pow
 \\
 \\
 \noindent
-In comparison, Spectrecoin will run on a standard Raspberry Pi and in addition to all the privacy features, Spectrecoin is also truly eco-friendly, sustainable and ‘\textit{green technology}’. The estimated loose upper bound, \textbf{annual 
-consumption for a Raspberry Pi running Spectrecoin is 16.6kWh}.
+In comparison, Alias will run on a standard Raspberry Pi and in addition to all the privacy features, Alias is also truly eco-friendly, sustainable and ‘\textit{green technology}’. The estimated loose upper bound, \textbf{annual 
+consumption for a Raspberry Pi running Alias is 16.6kWh}.
 
 \vspace{3mm} %5mm vertical space
 
@@ -150,18 +157,18 @@ $41 TWh = 41*1012 Wh = 41,000,000,000,000 Wh$
 
 \vspace{3mm} %5mm vertical space
 
-Spectrecoin node:\\
+Alias node:\\
 $16.6 KWh = 16.6 * 103 Wh = 16,600 Wh * 1000 (nodes) = 16,600,000 Wh$
 
 \vspace{3mm} %5mm vertical space
 
 \noindent
 That means that the whole \textit{Bitcoin network consumes almost \textbf{2.5 million times
-more energy} than what an imaginary Spectrecoin network would consume}, assuming
-1000 Spectrecoin Raspberry Pi nodes.
+more energy} than what an imaginary Alias network would consume}, assuming
+1000 Alias Raspberry Pi nodes.
 \newpage
 \noindent
-In summary, the PoSv3 / PoAS protocols are both potentially more secure,
+In summary, the PoSv3 / APoS protocols are both potentially more secure,
 immensely more energy efficient and provide for better decentralisation.
 It is beyond the scope of this paper to discuss this further and there are
 various discussions around the internet if you are interested in the PoW vs.
@@ -169,8 +176,8 @@ PoS debate.
 \\
 \\
 \noindent
-In the next sections we will explore the different aspects of Spectrecoin in
+In the next sections we will explore the different aspects of Alias in
 more detail. We start on the next page with a detailed introduction to the
-Spectrecoin privacy features before we go on to discuss Proof-of-Stake v3
+Alias privacy features before we go on to discuss Proof-of-Stake v3
 (PoSv3) in detail. We move on to explain the privacy features and the new
-Proof-of-Anonymous-Stake (PoAS) protocol.
+Anonymous-Proof-of-Stake (APoS) protocol.

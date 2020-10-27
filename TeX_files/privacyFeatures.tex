@@ -1,17 +1,17 @@
-\section{Spectrecoin Privacy Features}
+\section{Alias Privacy Features}
 Before we go on to explain some of the features and technologies of
-Spectrecoin in more detail, we will give you a short overview of the
-privacy technology used. The Spectrecoin blockchain is a ‘\textit{dual-coin}’
+Alias in more detail, we will give you a short overview of the
+privacy technology used. The Alias blockchain is a ‘\textit{dual-coin}’
 system or a system where two distinct types of transaction outputs can
 exist in the same block. Both non-private or standard UTXOs (\textit{hereafter
-referred to as public coins or \textbf{XSPEC}}) and private coins or ATXOs 
-(\textit{hereafter referred to as private coins or \textbf{SPECTRE}}) exists 
+referred to as public coins or \textbf{ALIAS (public)}}) and private coins or ATXOs 
+(\textit{hereafter referred to as private coins or \textbf{ALIAS (private)}}) exists 
 side by side in the blockchain. Transactions can be carried out with both 
 public and private coins and they are interchangeable and independent. We 
-introduce the terms \textbf{XSPEC} for the public coins spent in standard UTXO based 
-transactions and \textbf{SPECTRE} for the private coins spent in  confidential ATXO based
-transactions using ring signatures. \textbf{XSPEC} is used in the PoSv3 consensus
-mechanism and \textbf{SPECTRE} is used in the PoAS consensus mechanism.
+introduce the terms \textbf{ALIAS (public)} for the public coins spent in standard UTXO based 
+transactions and \textbf{ALIAS (private)} for the private coins spent in  confidential ATXO based
+transactions using ring signatures. \textbf{ALIAS (public)} is used in the PoSv3 consensus
+mechanism and \textbf{ALIAS (private)} is used in the APoS consensus mechanism.
 
 
 
@@ -33,63 +33,63 @@ work to implement fixes.
 \\
 \\
 \noindent
-The Spectrecoin network instead employs dual-key stealth address cryptography
-to facilitate the creation of privacy maintaining \textbf{SPECTRE} coins on the
-blockchain whilst consuming \textbf{XSPEC}. This is done without the trusted setup
+The Alias network instead employs dual-key stealth address cryptography
+to facilitate the creation of privacy maintaining \textbf{ALIAS (private)} coins on the
+blockchain whilst consuming \textbf{ALIAS (public)}. This is done without the trusted setup
 required for Zerocoin and without using the computationally intense Zerocoin
 cryptographic methods. Where the Zerocoin protocol use ZKP to anonymise and
 unlink the transactions, 
-\textbf{the Spectrecoin network use ring signatures}\footnote{https://people.csail.mit.edu/rivest/pubs/RST01.pdf/}\footnote{https://arxiv.org/pdf/1612.01188.pdf}.
+\textbf{the Alias network use ring signatures}\footnote{https://people.csail.mit.edu/rivest/pubs/RST01.pdf/}\footnote{https://arxiv.org/pdf/1612.01188.pdf}.
 \\
 \\
 \noindent
 The ‘\textit{dual-coin}’ system can be seen as a feature allowing for complete
 transparent transactions and network audit functions if needed but
 without any privacy indebted overhead such as resource intensive
-calculations. Privacy maintaining \textbf{SPECTRE} can ONLY be created by
-consuming \textbf{XSPEC} at this time and the total supply on the network
+calculations. Privacy maintaining \textbf{ALIAS (private)} can ONLY be created by
+consuming \textbf{ALIAS (public)} at this time and the total supply on the network
 will always be transparent. There is no ‘\textit{bleed through}’ between the
 two types of transaction outputs and no compromise in privacy.
 \newpage
 
 
-\subsection{XSPEC/SPECTRE Conversion}
-Each user can convert (\textit{non-private}) \textbf{XSPEC} coins into 
-(\textit{private}) coins, \textbf{SPECTRE}. Users can then send \textbf{SPECTRE} 
-to other users and split or merge the \textbf{SPECTRE} they own \underline{in any 
-way that preserves the total value}. Once \textbf{SPECTRE} has been created
-and matured the user will also be able to stake in private through the PoAS
-protocol. Users can also convert \textbf{SPECTRE} back into \textbf{XSPEC}, 
+\subsection{ALIAS (public)/ALIAS (private) Conversion}
+Each user can convert (\textit{non-private}) \textbf{ALIAS (public)} coins into 
+(\textit{private}) coins, \textbf{ALIAS (private)}. Users can then send \textbf{ALIAS (private)} 
+to other users and split or merge the \textbf{ALIAS (private)} they own \underline{in any 
+way that preserves the total value}. Once \textbf{ALIAS (private)} has been created
+and matured the user will also be able to stake in private through the APoS
+protocol. Users can also convert \textbf{ALIAS (private)} back into \textbf{ALIAS (public)}, 
 though in principle this is not necessary: all transactions can be made in 
-terms of \textbf{SPECTRE}.
+terms of \textbf{ALIAS (private)}.
 
 
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[width=\textwidth]{WalletUI-3x-2.png}
-	\caption{Your wallet will show your \textbf{XSPEC} balance and your 
-		\textbf{SPECTRE} balance.}
+	\includegraphics[width=\textwidth]{Images/wallet_alias_1.jpg}
+	\caption{Your wallet will show your \textbf{ALIAS (public)} balance and your 
+		\textbf{ALIAS (private)} balance.}
 \end{figure}
 
 
 
 \noindent
-The core privacy technology used in Spectrecoin is:
+The core privacy technology used in Alias is:
 
 \begin{table}[h]
 \resizebox{\textwidth}{!}{%
 \begin{tabular}{@{}ll@{}}
 \hline
-\textbf{Recipient privacy} & Stealth  addresses  are  used  to  protect  the  recipient’s  privacy.   (SPECTRE only) \\ 
+\textbf{Recipient privacy} & Stealth  addresses  are  used  to  protect  the  recipient’s  privacy.   (ALIAS (private) only) \\ 
 \midrule
-\textbf{Sender privacy} & Ring Signatures are used to protect the sender’s privacy.  (SPECTRE only) \\ 
+\textbf{Sender privacy} & Ring Signatures are used to protect the sender’s privacy.  (ALIAS (private) only) \\ 
 \midrule
-\textbf{IP address privacy} & All Spectrecoin nodes run as TOR hidden services to protect users IP address. \\
+\textbf{IP address privacy} & All Alias nodes run as Tor hidden services to protect users IP address. \\
 \midrule
 \textbf{Un-traceability} & for each incoming transaction all possible senders are equiprobable. \\
 \midrule
-\textbf{Un-linkability} & for  two  outgoing  transactions  it  is  impossible  to  prove  the  same  receiver.(SPECTRE only) \\
+\textbf{Un-linkability} & for  two  outgoing  transactions  it  is  impossible  to  prove  the  same  receiver.(ALIAS (private) only) \\
 \hline
 \end{tabular}%
 }
@@ -97,4 +97,4 @@ The core privacy technology used in Spectrecoin is:
 \noindent
 Now let’s have a look at the different features in some more detail in the
 following sections. We aim to briefly explain the background and nature of
-stealth addresses and ring-signatures and how this is used in Spectrecoin.
+stealth addresses and ring-signatures and how this is used in Alias.

@@ -1,6 +1,6 @@
 \section{Stealth Addresses}
 Before we go on to explain what stealth technology is and how it is used in
-Spectrecoin we need to get some background and some knowledge about how
+Alias we need to get some background and some knowledge about how
 standard UTXO transactions might be de-anonymised and why stealth technology
 came to be used to counter this issue. It will also become apparent why
 stealth address technology in itself is not sufficient to provide reasonable
@@ -8,12 +8,12 @@ privacy.
 \\
 \\
 \noindent
-The Spectrecoin blockchain is based on the design from Bitcoin Core 
+The Alias blockchain is based on the design from Bitcoin Core 
 (\textit{except the consensus mechanisms}) and in both systems there are 
 $1.46 \ast 10^{48}$ possible receiving addresses. This is an extremely 
 large number and it would give every person on Earth $2.05 \ast 10^{38}$ 
 different receiving addresses to use. The fact that it is possible
-to re-use an address more than once can be considerd a fluke and is not by
+to re-use an address more than once can be considered a fluke and is not by
 design.
 \\
 \\
@@ -25,10 +25,10 @@ and the merging of outputs}.
 \\
 \\
 \noindent
-Address re-use is treating XSPEC addresses like a bank account where a single
-address is used for multiple transactions. XSPEC addresses are not designed to
-be used in this way. There are in fact no restrictions on the number of XSPEC
-addresses one person can use and for each transaction a new XSPEC address should
+Address re-use is treating ALIAS (public) addresses like a bank account where a single
+address is used for multiple transactions. ALIAS (public) addresses are not designed to
+be used in this way. There are in fact no restrictions on the number of ALIAS (public)
+addresses one person can use and for each transaction a new ALIAS (public) address should
 be created.
 \\
 \\
@@ -126,10 +126,10 @@ Blockchain analysis can easily link this. \textbf{This is the reason why any
 cryptocurrency that relies on stealth addresses ONLY is not private.}
 \newpage
 
-\subsection{Anonymous Spectrecoin Conversion}
+\subsection{Anonymous Alias Conversion}
 Dual-key Stealth technology is used in the process to create anonymous 
-\textbf{SPECTRE} by consuming the equivalent value of \textbf{XSPEC}. The 
-creation of \textbf{SPECTRE} involves the creation of an ATXO with a 
+\textbf{ALIAS (private)} by consuming the equivalent value of \textbf{ALIAS (public)}. The 
+creation of \textbf{ALIAS (private)} involves the creation of an ATXO with a 
 bundled one-time key-pair that will allow that ATXO to be ‘\textit{spent}’ 
 by providing a valid ring signature using your remaining public key 
 corresponding to the ATXO you previously created and the corresponding 
@@ -154,7 +154,7 @@ will be generated and the system will reject the transaction as that
 ‘\textit{keyimage}’ has been seen before.
 \\
 \\
-The following SPECTRE denominations are possible:
+The following ALIAS (private) denominations are possible:
 \\
 $1000, 500, 400, 300, 100, 50, 30, 10, 5, 4, 3, 1, \\0.5, 0.4, 0.3, 0.1, 0.0(000000)5, 0.0(000000)4, 0.0(000000)3, 0.0(000000)1$
 \\
@@ -163,5 +163,5 @@ $1000, 500, 400, 300, 100, 50, 30, 10, 5, 4, 3, 1, \\0.5, 0.4, 0.3, 0.1, 0.0(000
 We have seen how the use of stealth address tech can be used to solve the
 problem of address re-use and to create un-linkable transactions. Now, we
 still have the problem of UTXOs being linked together in future transactions.
-To resolve this issue Spectrecoin employs the use of ring signatures in
-transactions formed by ATXO outputs using \textbf{SPECTRE}.
+To resolve this issue Alias employs the use of ring signatures in
+transactions formed by ATXO outputs using \textbf{ALIAS (private)}.
