@@ -1,7 +1,7 @@
-# Spectrecoin Whitepaper
+# ALIAS Whitepaper
 
 This repository contains the [LaTeX](https://www.latex-project.org/) sources
-for the Spectrecoin Whitepaper.
+for the ALIAS Whitepaper.
 
 ## Requirements
 
@@ -10,6 +10,8 @@ for the Spectrecoin Whitepaper.
 * Install a writing environment like [TeXstudio](https://www.texstudio.org/)
   * Activate the option to install required packages automatically
   * All other settings default
+
+or use online tools like [OverLeaf](https://www.overleaf.com/)
 
 ## How to edit
 
